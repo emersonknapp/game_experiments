@@ -1,0 +1,7 @@
+Various game programming endeavors.
+
+Pygames currently contains
+  Snack, a Snake clone
+  Quadris, a Tetris clone
+
+Opengl01 contains the beginning of an attempt at a Space Invaders clone.
