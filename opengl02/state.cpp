@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 //************
 // STATE    
 //************
@@ -18,6 +17,13 @@ void State::kill() {
   m_running = false;
 } 
 
+State* State::getSuccessor() {
+  return m_successor;
+}
+
+std::vector<Renderable*>& State::getRenderables() {
+  return m_renderables;
+}
 
 //************
 // STATE MANAGER
@@ -38,6 +44,7 @@ void StateManager::push(State* s){
 }
 
 void StateManager::pop(){
+  delete m_states.back();
   m_states.pop_back();
 }
 
@@ -57,7 +64,20 @@ void StateManager::swap(State* s){
 bool StateManager::update(int mils) {
   if (isEmpty()) return false;
   
-  if (!peek()->update(mils)) pop();
+  StateUpdate su = peek()->update(mils);
+  switch (su) {
+    case ST_POP:
+      pop(); 
+    break;
+    case ST_PUSH:
+      push(peek()->getSuccessor());
+    break;
+    case ST_SWAP:
+      swap(peek()->getSuccessor());
+    break;
+    default:
+    break;
+  }
   
   return true;
 }
@@ -67,11 +87,11 @@ void StateManager::kill(){
     pop();
   }
 }
-  
-void StateManager::input(void){
-  //TODO: imp
-}
 
 bool StateManager::isEmpty(){
   return m_states.empty();
+}
+
+std::vector<Renderable*>& StateManager::getRenderables() {
+  return peek()->getRenderables();
 }

@@ -12,7 +12,7 @@ public:
   ~SI_Game();
   virtual void run();
   virtual void end();
-  virtual void displayScene();
+  virtual void draw();
   virtual void reshapeViewport(int w, int h);
   virtual void idle();
   virtual void normalKeyDown(unsigned char key, int x, int y);
@@ -20,18 +20,33 @@ public:
   virtual void specialKeyDown(int key, int x, int y);
   virtual void specialKeyUp(int key, int x, int y);
   Viewport* getViewport();
+private:
+  Viewport* m_viewport;
+  StateManager* m_stateMan;
+  InputManager* m_inputMan;
+  bool m_running;
+  Renderer* m_renderer;
 };
 
-
-class S_MenuTitle : public State {
+class M_Title : public Menu {
 public:
-  bool update(int mils);
+  M_Title();
+  StateUpdate update(int mils);
+  void selectItem(int i);
+  std::vector<Renderable*>& getRenderables();
 };
-class Ctrl_MenuTitle : public InputController {
+
+class S_Play : public State {
 public:
-  Ctrl_MenuTitle(S_MenuTitle* menu);
+  S_Play();
+  StateUpdate update(int mils);
+};
+
+class Ctrl_M_Title : public InputController {
+public:
+  Ctrl_M_Title(M_Title* menu);
   virtual bool key(InputType itype, int k, double x, double y);
 private:
-  S_MenuTitle* m_menu;
+  M_Title* m_menu;
 };
 

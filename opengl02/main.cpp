@@ -6,8 +6,8 @@ Game* g_game;
 //****************************************************
 // Callbacks
 //****************************************************
-void displaySceneCB() {
-  g_game->displayScene();
+void drawCB() {
+  g_game->draw();
 }
 void reshapeViewportCB(int w, int h) {
   g_game->reshapeViewport(w, h);
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 	glutSpecialFunc(specialKeyDownCB);
 	glutSpecialUpFunc(specialKeyUpCB);
 	glutIdleFunc(idleCB);
-  glutDisplayFunc(displaySceneCB);			
+  glutDisplayFunc(drawCB);			
   glutReshapeFunc(reshapeViewportCB);
   
   g_game->run();

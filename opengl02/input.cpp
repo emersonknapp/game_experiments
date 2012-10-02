@@ -20,5 +20,13 @@ void InputManager::key(InputType itype, int k, double x, double y) {
 }
 
 void InputManager::addController(InputController* con) {
-  m_controllers.push_back(con);   
+  m_controllers.push_back(con);
+}
+
+Controlled::~Controlled() {
+  m_ctrl->removeControlled(this);
+}
+
+void Controlled::registerController(InputController* ic) {
+  m_ctrl = ic;
 }

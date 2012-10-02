@@ -1,12 +1,12 @@
 #include "si_game.h"
 
-
 using namespace std;
 
 SI_Game::SI_Game(int argc, char* argv[])  {
   m_viewport = new Viewport(SCREEN_WIDTH, SCREEN_HEIGHT);
   m_stateMan = new StateManager();
   m_inputMan = new InputManager();
+  m_renderer = new Renderer();
   
   m_running = false;
 
@@ -29,11 +29,12 @@ SI_Game::~SI_Game() {
   delete m_viewport;
   delete m_inputMan;
   delete m_stateMan;
+  delete m_renderer;
 }
 
 void SI_Game::run() {
-  S_MenuTitle* start = new S_MenuTitle();
-  Ctrl_MenuTitle* start_ctrl = new Ctrl_MenuTitle(start);
+  M_Title* start = new M_Title();
+  Ctrl_M_Title* start_ctrl = new Ctrl_M_Title(start);
   
   m_stateMan->push(start);
   m_inputMan->addController(start_ctrl);
@@ -54,22 +55,25 @@ Viewport* SI_Game::getViewport() {
 //****************************************************
 // Handlers
 //****************************************************
-void SI_Game::displayScene() {	
+void SI_Game::draw() {	
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	/*
-	glTranslatef(-.15, -1.1, -3);
-	//glRotatef(-40, 1, 0, 0);
 	
-	for (size_t i=0; i<scene->entities.size(); i++) {
-		glPushMatrix();
-		Entity* e = scene->entities[i];
-		e->draw();
-		glPopMatrix();
-	}
-	*/
+	if (!m_stateMan->isEmpty())
+    m_renderer->render(m_stateMan->getRenderables());
+  
+  /*
+  FTGLPixmapFont font("./data/trebuchet.ttf");
+  if (font.Error()) 
+    Error("Font broken.");
+  font.FaceSize(72);
+  
+  glRasterPos2f(-1,.5);
+  font.Render("Hello World!");
+  */
+  
 	glFlush();
 	glutSwapBuffers();		
 }
@@ -126,15 +130,42 @@ void SI_Game::specialKeyUp(int key, int x, int y) {
 // Title Menu
 //****************************************************
 
-bool S_MenuTitle::update(int mils) {
-  if (!running()) return false;
-  
-  return true;
+M_Title::M_Title() {
+  m_successor = NULL;
+  m_nextUpdate = ST_OK;
+  m_renderables.push_back(new R_Text(-1,.5,"Title", 72));
+  m_renderables.push_back(new R_Text(-1,.2,"[P]lay", 36));
+  m_renderables.push_back(new R_Text(-1,-.1,"[Q]uit", 36));
 }
 
-Ctrl_MenuTitle::Ctrl_MenuTitle(S_MenuTitle* menu) : m_menu(menu) {}
+StateUpdate M_Title::update(int mils) {
+  if (!running()) return ST_POP;
+  return m_nextUpdate;
+}
 
-bool Ctrl_MenuTitle::key(InputType itype, int k, double x, double y) {
+void M_Title::selectItem(int i) {
+  /*
+  0: [P]lay game.
+  1: [Q]uit.
+  */
+  switch (i) {
+    case 0: 
+      m_successor = new S_Play();
+      m_nextUpdate = ST_SWAP;
+    break;
+    case 1:
+      m_running = false;
+    break;
+  }
+}
+
+std::vector<Renderable*>& M_Title::getRenderables() {
+  return m_renderables;
+}
+
+Ctrl_M_Title::Ctrl_M_Title(M_Title* menu) : m_menu(menu) {}
+
+bool Ctrl_M_Title::key(InputType itype, int k, double x, double y) {
   bool ret=true;
   unsigned char ckey = (unsigned char)k;
   switch (itype) 
@@ -144,8 +175,11 @@ bool Ctrl_MenuTitle::key(InputType itype, int k, double x, double y) {
       {
         case 'q':
         case 'Q':
-          m_menu->kill();
+          m_menu->selectItem(1);
           break;
+        case 'p':
+        case 'P':
+          m_menu->selectItem(0);
         default:
           ret=false;
         break;
@@ -156,4 +190,20 @@ bool Ctrl_MenuTitle::key(InputType itype, int k, double x, double y) {
     break;
   }
   return ret;
+}
+
+
+//****************************************************
+// Play State
+//****************************************************
+
+S_Play::S_Play() {
+  m_successor = NULL;
+  m_nextUpdate = ST_OK;
+  m_renderables.push_back(new R_Text(-1,.7,"Play", 15));
+}
+
+StateUpdate S_Play::update(int mils) {
+  if (!running()) return ST_POP;
+  return m_nextUpdate;
 }

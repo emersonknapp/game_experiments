@@ -21,18 +21,24 @@ static DWORD lastTime;
 static struct timeval lastTime;
 #endif
 
+#include <Eigen/Core>
+#include <FTGL/ftgl.h>
 //GAME STUFF
 #include "viewport.h"
 #include "quits.h"
 #include "state.h"
 #include "input.h"
+#include "renderable.h"
+#include "renderer.h"
 
+///Game class is the base interface for main() entrance into the game.
+///Contains input, state, and rendering managers (plus others in future)
 class Game {
 public:
   virtual ~Game() {}
   virtual void run()=0;
   virtual void end()=0;
-  virtual void displayScene()=0;
+  virtual void draw()=0;
   virtual void reshapeViewport(int w, int h)=0;
   virtual void idle()=0;
   virtual void normalKeyDown(unsigned char key, int x, int y)=0;
@@ -41,8 +47,5 @@ public:
   virtual void specialKeyUp(int key, int x, int y)=0;
   virtual Viewport* getViewport()=0;
 protected:
-  Viewport* m_viewport;
-  StateManager* m_stateMan;
-  InputManager* m_inputMan;
-  bool m_running;
+
 };
