@@ -17,18 +17,22 @@ void State::kill() {
   m_running = false;
 } 
 
-State* State::getSuccessor() {
-  return m_successor;
-}
-
 std::vector<Renderable*>& State::getRenderables() {
   return m_renderables;
+}
+
+queue<StateUpdate>* State::update(int mils) {
+  if (!running()) {
+    m_lastUpdate.push((StateUpdate){ST_POP, SI_NULL, 0});
+  }
+  
+  return &m_lastUpdate;
 }
 
 //************
 // STATE MANAGER
 //************
-
+/*
 StateManager::StateManager(){
   
 }
@@ -66,17 +70,7 @@ bool StateManager::update(int mils) {
   
   StateUpdate su = peek()->update(mils);
   switch (su) {
-    case ST_POP:
-      pop(); 
-    break;
-    case ST_PUSH:
-      push(peek()->getSuccessor());
-    break;
-    case ST_SWAP:
-      swap(peek()->getSuccessor());
-    break;
-    default:
-    break;
+
   }
   
   return true;
@@ -95,3 +89,4 @@ bool StateManager::isEmpty(){
 std::vector<Renderable*>& StateManager::getRenderables() {
   return peek()->getRenderables();
 }
+*/

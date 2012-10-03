@@ -31,9 +31,9 @@ static struct timeval lastTime;
 #include "renderable.h"
 #include "renderer.h"
 
-///Game class is the base interface for main() entrance into the game.
-///Contains input, state, and rendering managers (plus others in future)
-class Game {
+///Game: state manager, traffic director for input and GL callbacks
+///Contains input, and rendering managers (plus others in future)
+class Game : public StateManager {
 public:
   virtual ~Game() {}
   virtual void run()=0;

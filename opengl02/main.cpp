@@ -1,7 +1,7 @@
 #include "main.h"
 
 
-Game* g_game;
+SI_Game* g_game;
 
 //****************************************************
 // Callbacks

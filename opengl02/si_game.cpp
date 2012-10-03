@@ -1,12 +1,16 @@
 #include "si_game.h"
 
+#define CALLBACK_DEBUG false
+#define STATE_DEBUG false
+#define TITLE_DEBUG false
+
 using namespace std;
 
-SI_Game::SI_Game(int argc, char* argv[])  {
+SI_Game::SI_Game(int argc, char* argv[]) {
   m_viewport = new Viewport(SCREEN_WIDTH, SCREEN_HEIGHT);
-  m_stateMan = new StateManager();
   m_inputMan = new InputManager();
   m_renderer = new Renderer();
+  m_stateFactory = new SIStateFactory();
   
   m_running = false;
 
@@ -28,17 +32,23 @@ SI_Game::SI_Game(int argc, char* argv[])  {
 SI_Game::~SI_Game() {
   delete m_viewport;
   delete m_inputMan;
-  delete m_stateMan;
   delete m_renderer;
+  delete m_stateFactory;
+  
+  for (vector<State*>::iterator it = m_states.begin(); it <= m_states.end(); it++) {
+    delete *it;
+  }
 }
 
 void SI_Game::run() {
-  M_Title* start = new M_Title();
-  Ctrl_M_Title* start_ctrl = new Ctrl_M_Title(start);
+  if (STATE_DEBUG) cout << "Running Game" << endl;
   
-  m_stateMan->push(start);
-  m_inputMan->addController(start_ctrl);
+  push(SI_ST_TITLE);
   
+  //InputController* start_ctrl = m_controllerFactory->getNewStateInputController(SI_ST_TITLE);
+  //start_ctrl->setControlled((Controlled*)peek());
+  //m_inputMan->addController(start_ctrl);
+    
   m_running = true;
   
 	glutMainLoop();
@@ -53,16 +63,95 @@ Viewport* SI_Game::getViewport() {
 }
 
 //****************************************************
+// Game State Managing Methods
+//****************************************************
+void SI_Game::push(eSIObject s){
+  State* newState = m_stateFactory->getNewState(s);
+  if (newState != NULL) {
+    m_states.push_back(newState);
+    InputController* newController = m_controllerFactory->getNewStateInputController(s);
+    if (newController != NULL) {
+      newController->setControlled(newState);
+      m_inputMan->addController(newController);
+    }
+  }
+}
+
+void SI_Game::pop(){
+  State* s = m_states.back();
+  m_states.pop_back();
+  m_inputMan->removeControllerFor(s);
+}
+
+State* SI_Game::peek(){
+  return m_states.back();
+}
+
+State* SI_Game::peekPrev(){
+  return m_states.at(m_states.size()-2);
+}
+
+void SI_Game::swap(eSIObject s){
+  pop();
+  push(s);
+}
+
+bool SI_Game::update(int mils) {
+  if (isEmpty()) return false;
+  
+  queue<StateUpdate>* suQueue = peek()->update(mils);
+  while (!suQueue->empty()) {
+    StateUpdate su = suQueue->front();
+    suQueue->pop();
+    eStateUpdate suType = su.type;
+    switch (suType) {
+      case ST_POP:
+        pop(); 
+      break;
+      case ST_PUSH:
+        //push((State*)su.ptr);
+      break;
+      case ST_SWAP: {
+        swap(su.obj);
+        break;
+      }
+      default:
+      Warning("Unhandled update type.");
+      break;
+    }
+  }
+  
+  return true;
+}
+
+void SI_Game::kill(){
+  while (!isEmpty()) {
+    pop();
+  }
+}
+
+bool SI_Game::isEmpty(){
+  return m_states.empty();
+}
+
+std::vector<Renderable*>& SI_Game::getRenderables() {
+  return peek()->getRenderables();
+}
+
+
+//****************************************************
 // Handlers
 //****************************************************
 void SI_Game::draw() {	
+  if (CALLBACK_DEBUG) cout << "game_draw" << endl;
+  
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	
-	if (!m_stateMan->isEmpty())
-    m_renderer->render(m_stateMan->getRenderables());
+	if (!isEmpty())
+    m_renderer->render(getRenderables());
   
   /*
   FTGLPixmapFont font("./data/trebuchet.ttf");
@@ -79,6 +168,7 @@ void SI_Game::draw() {
 }
 
 void SI_Game::reshapeViewport(int w, int h) {
+   if (CALLBACK_DEBUG) cout << "game_reshapeviewport" << endl;
 	m_viewport->w = w;
 	m_viewport->h = h;
 	
@@ -92,6 +182,7 @@ void SI_Game::reshapeViewport(int w, int h) {
 }
 
 void SI_Game::idle() {	
+   if (CALLBACK_DEBUG) cout << "game_idle" << endl;
 	//Calculate time since last frame and update accordingly
 	float dt;
 #ifdef _WIN32
@@ -104,7 +195,7 @@ void SI_Game::idle() {
 #endif
 	lastTime = currentTime;
 	
-	bool keepGoing = m_stateMan->update(0); //TODO: this should be actual time update
+	bool keepGoing = update(0); //TODO: this should be actual time update
   if (!keepGoing) quitProgram();
 	glutPostRedisplay();
 }
@@ -125,22 +216,54 @@ void SI_Game::specialKeyUp(int key, int x, int y) {
 	m_inputMan->key(SPEC_UP, key, 0.0, 0.0); //TODO: actual value mapping
 }
 
+//****************************************************
+// Factories
+//****************************************************
+
+State* SIStateFactory::getNewState(eSIObject es) {
+  switch (es) {
+    case SI_ST_TITLE:
+      return new M_Title();
+    case SI_ST_PLAY:
+      return new S_Play();
+    default:
+      stringstream ss;
+      ss << "Tried to initialize undefined state " << es;
+      Error(ss.str());
+      return NULL;
+  }
+}
+
+InputController* SIControllerFactory::getNewStateInputController(eSIObject es) {
+  switch (es) {
+    case SI_ST_TITLE:
+      return new Ctrl_M_Title();
+    case SI_ST_PLAY:
+      return new Ctrl_Play();
+    default:
+    stringstream ss;
+    ss << "Tried to initialize controller for undefined state " << es;
+    Error(ss.str());
+    return NULL;
+  }
+}
 
 //****************************************************
 // Title Menu
 //****************************************************
 
 M_Title::M_Title() {
-  m_successor = NULL;
-  m_nextUpdate = ST_OK;
   m_renderables.push_back(new R_Text(-1,.5,"Title", 72));
   m_renderables.push_back(new R_Text(-1,.2,"[P]lay", 36));
   m_renderables.push_back(new R_Text(-1,-.1,"[Q]uit", 36));
 }
 
-StateUpdate M_Title::update(int mils) {
-  if (!running()) return ST_POP;
-  return m_nextUpdate;
+queue<StateUpdate>* M_Title::update(int mils) {
+  if (!running()) {
+    m_lastUpdate.push((StateUpdate){ST_POP, SI_NULL, 0});
+  }
+  
+  return &m_lastUpdate;
 }
 
 void M_Title::selectItem(int i) {
@@ -149,13 +272,14 @@ void M_Title::selectItem(int i) {
   1: [Q]uit.
   */
   switch (i) {
-    case 0: 
-      m_successor = new S_Play();
-      m_nextUpdate = ST_SWAP;
-    break;
-    case 1:
+    case 0: {
+      m_lastUpdate.push((StateUpdate){ST_SWAP, SI_ST_PLAY, 0});
+      break;
+    }
+    case 1: {
       m_running = false;
-    break;
+      break;
+    }
   }
 }
 
@@ -163,9 +287,12 @@ std::vector<Renderable*>& M_Title::getRenderables() {
   return m_renderables;
 }
 
-Ctrl_M_Title::Ctrl_M_Title(M_Title* menu) : m_menu(menu) {}
-
 bool Ctrl_M_Title::key(InputType itype, int k, double x, double y) {
+  if (m_menu == NULL) {
+    Warning("Controller accessing NULL controlled.");
+    return false;
+  }
+    
   bool ret=true;
   unsigned char ckey = (unsigned char)k;
   switch (itype) 
@@ -180,6 +307,47 @@ bool Ctrl_M_Title::key(InputType itype, int k, double x, double y) {
         case 'p':
         case 'P':
           m_menu->selectItem(0);
+          break;
+        default:
+          ret=false;
+        break;
+      }
+    break;
+    default:
+      ret=false;
+    break;
+  }
+  if (ret && INPUT_DEBUG) cout << "TitleCtrl got this" << endl;
+  return ret;
+}
+
+Controlled* Ctrl_M_Title::getControlled() {
+  return m_menu;
+}
+
+//****************************************************
+// Play State
+//****************************************************
+S_Play::S_Play() {
+  m_renderables.push_back(new R_Text(-1,.7,"Play", 15));
+}
+
+bool Ctrl_Play::key(InputType itype, int k, double x, double y) {
+  if (m_playstate == NULL) {
+    Warning("Controller accessing NULL controlled.");
+    return false;
+  }
+  bool ret=true;
+  unsigned char ckey = (unsigned char)k;
+  switch (itype) 
+  {
+    case NORM_DOWN:
+      switch (ckey) 
+      {
+        case 'q':
+        case 'Q':
+          m_playstate->kill();
+          break;
         default:
           ret=false;
         break;
@@ -190,20 +358,4 @@ bool Ctrl_M_Title::key(InputType itype, int k, double x, double y) {
     break;
   }
   return ret;
-}
-
-
-//****************************************************
-// Play State
-//****************************************************
-
-S_Play::S_Play() {
-  m_successor = NULL;
-  m_nextUpdate = ST_OK;
-  m_renderables.push_back(new R_Text(-1,.7,"Play", 15));
-}
-
-StateUpdate S_Play::update(int mils) {
-  if (!running()) return ST_POP;
-  return m_nextUpdate;
 }
