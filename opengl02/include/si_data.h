@@ -1,8 +1,11 @@
 #pragma once
-typedef int ObjectID;
 
 enum eSIObject {
   SI_NULL,
-  SI_ST_TITLE,
-  SI_ST_PLAY
+  ST_TITLE,
+  ST_PLAY,
+  TANK,
+  INVADER1,
+  SHIELD,
+  BULLET
 };

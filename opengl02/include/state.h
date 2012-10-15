@@ -6,11 +6,10 @@
 #include "renderable.h"
 #include "input.h"
 #include "si_data.h"
-
+#include "object.h"
 
 
 //Allows for message passing from state back up to state manager on update.
-//ST_OK is implicitly passed by not having any of the other state updates.
 enum eStateUpdate {ST_POP, ST_PUSH, ST_SWAP, ENT_DEAD, ENT_NEW};
 
 struct StateUpdate {
@@ -21,14 +20,13 @@ struct StateUpdate {
 
 using namespace std;
 
-class State : public Controlled {
+class State : public Object, public Controlled {
 public:
   State();
   virtual queue<StateUpdate>* update(int mils);
   virtual bool running(); //return false when state is finished, true otherwise
   virtual void kill(); //make this state end immediately on next update
   virtual vector<Renderable*>& getRenderables();
-  virtual string name() {return "AbstractState";}
 protected:
   bool m_running;
   queue<StateUpdate> m_lastUpdate;

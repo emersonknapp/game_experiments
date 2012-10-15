@@ -10,7 +10,7 @@ SI_Game::SI_Game(int argc, char* argv[]) {
   m_viewport = new Viewport(SCREEN_WIDTH, SCREEN_HEIGHT);
   m_inputMan = new InputManager();
   m_renderer = new Renderer();
-  m_stateFactory = new SIStateFactory();
+  m_factory = new SIObjectFactory();
   
   m_running = false;
 
@@ -33,7 +33,7 @@ SI_Game::~SI_Game() {
   delete m_viewport;
   delete m_inputMan;
   delete m_renderer;
-  delete m_stateFactory;
+  delete m_factory;
   
   for (vector<State*>::iterator it = m_states.begin(); it <= m_states.end(); it++) {
     delete *it;
@@ -43,9 +43,9 @@ SI_Game::~SI_Game() {
 void SI_Game::run() {
   if (STATE_DEBUG) cout << "Running Game" << endl;
   
-  push(SI_ST_TITLE);
+  push(ST_TITLE);
   
-  //InputController* start_ctrl = m_controllerFactory->getNewStateInputController(SI_ST_TITLE);
+  //InputController* start_ctrl = m_controllerFactory->getNewStateInputController(ST_TITLE);
   //start_ctrl->setControlled((Controlled*)peek());
   //m_inputMan->addController(start_ctrl);
     
@@ -66,10 +66,10 @@ Viewport* SI_Game::getViewport() {
 // Game State Managing Methods
 //****************************************************
 void SI_Game::push(eSIObject s){
-  State* newState = m_stateFactory->getNewState(s);
+  State* newState = m_factory->getNewState(s);
   if (newState != NULL) {
     m_states.push_back(newState);
-    InputController* newController = m_controllerFactory->getNewStateInputController(s);
+    InputController* newController = m_factory->getNewStateInputController(s);
     if (newController != NULL) {
       newController->setControlled(newState);
       m_inputMan->addController(newController);
@@ -184,18 +184,18 @@ void SI_Game::reshapeViewport(int w, int h) {
 void SI_Game::idle() {	
    if (CALLBACK_DEBUG) cout << "game_idle" << endl;
 	//Calculate time since last frame and update accordingly
-	float dt;
+	int dt;
 #ifdef _WIN32
 	DWORD currentTime = GetTickCount();
-	dt = (float)(currentTime - lastTime)*0.001f; 
+	dt = currentTime - lastTime; 
 #else
 	timeval currentTime;
 	gettimeofday(&currentTime, NULL);
-	dt = (float)((currentTime.tv_sec - lastTime.tv_sec) + 1e-6*(currentTime.tv_usec - lastTime.tv_usec));
+	dt = 1e3*(currentTime.tv_sec - lastTime.tv_sec) + 1e-3*(currentTime.tv_usec - lastTime.tv_usec);
 #endif
 	lastTime = currentTime;
 	
-	bool keepGoing = update(0); //TODO: this should be actual time update
+	bool keepGoing = update(dt); //TODO: this should be actual time update
   if (!keepGoing) quitProgram();
 	glutPostRedisplay();
 }
@@ -220,11 +220,11 @@ void SI_Game::specialKeyUp(int key, int x, int y) {
 // Factories
 //****************************************************
 
-State* SIStateFactory::getNewState(eSIObject es) {
+State* SIObjectFactory::getNewState(eSIObject es) {
   switch (es) {
-    case SI_ST_TITLE:
+    case ST_TITLE:
       return new M_Title();
-    case SI_ST_PLAY:
+    case ST_PLAY:
       return new S_Play();
     default:
       stringstream ss;
@@ -234,128 +234,30 @@ State* SIStateFactory::getNewState(eSIObject es) {
   }
 }
 
-InputController* SIControllerFactory::getNewStateInputController(eSIObject es) {
+InputController* SIObjectFactory::getNewStateInputController(eSIObject es) {
+  InputController* ret;
   switch (es) {
-    case SI_ST_TITLE:
-      return new Ctrl_M_Title();
-    case SI_ST_PLAY:
-      return new Ctrl_Play();
-    default:
-    stringstream ss;
-    ss << "Tried to initialize controller for undefined state " << es;
-    Error(ss.str());
-    return NULL;
-  }
-}
-
-//****************************************************
-// Title Menu
-//****************************************************
-
-M_Title::M_Title() {
-  m_renderables.push_back(new R_Text(-1,.5,"Title", 72));
-  m_renderables.push_back(new R_Text(-1,.2,"[P]lay", 36));
-  m_renderables.push_back(new R_Text(-1,-.1,"[Q]uit", 36));
-}
-
-queue<StateUpdate>* M_Title::update(int mils) {
-  if (!running()) {
-    m_lastUpdate.push((StateUpdate){ST_POP, SI_NULL, 0});
-  }
-  
-  return &m_lastUpdate;
-}
-
-void M_Title::selectItem(int i) {
-  /*
-  0: [P]lay game.
-  1: [Q]uit.
-  */
-  switch (i) {
-    case 0: {
-      m_lastUpdate.push((StateUpdate){ST_SWAP, SI_ST_PLAY, 0});
+    case ST_TITLE:
+      ret = new Ctrl_M_Title();
       break;
-    }
-    case 1: {
-      m_running = false;
+    case ST_PLAY:
+      ret = new Ctrl_Play();
       break;
-    }
-  }
-}
-
-std::vector<Renderable*>& M_Title::getRenderables() {
-  return m_renderables;
-}
-
-bool Ctrl_M_Title::key(InputType itype, int k, double x, double y) {
-  if (m_menu == NULL) {
-    Warning("Controller accessing NULL controlled.");
-    return false;
-  }
-    
-  bool ret=true;
-  unsigned char ckey = (unsigned char)k;
-  switch (itype) 
-  {
-    case NORM_DOWN:
-      switch (ckey) 
-      {
-        case 'q':
-        case 'Q':
-          m_menu->selectItem(1);
-          break;
-        case 'p':
-        case 'P':
-          m_menu->selectItem(0);
-          break;
-        default:
-          ret=false;
-        break;
-      }
-    break;
     default:
-      ret=false;
-    break;
+      stringstream ss;
+      ss << "Tried to initialize controller for undefined state " << es;
+      Error(ss.str());
+      return NULL;
   }
-  if (ret && INPUT_DEBUG) cout << "TitleCtrl got this" << endl;
+  ObjectID oid = nextID();
+  ret->setOID(oid);
   return ret;
 }
 
-Controlled* Ctrl_M_Title::getControlled() {
-  return m_menu;
-}
+ObjectID SIObjectFactory::s_nextID = 0;
 
-//****************************************************
-// Play State
-//****************************************************
-S_Play::S_Play() {
-  m_renderables.push_back(new R_Text(-1,.7,"Play", 15));
-}
-
-bool Ctrl_Play::key(InputType itype, int k, double x, double y) {
-  if (m_playstate == NULL) {
-    Warning("Controller accessing NULL controlled.");
-    return false;
-  }
-  bool ret=true;
-  unsigned char ckey = (unsigned char)k;
-  switch (itype) 
-  {
-    case NORM_DOWN:
-      switch (ckey) 
-      {
-        case 'q':
-        case 'Q':
-          m_playstate->kill();
-          break;
-        default:
-          ret=false;
-        break;
-      }
-    break;
-    default:
-      ret=false;
-    break;
-  }
-  return ret;
+ObjectID SIObjectFactory::nextID() {
+  ObjectID oid = s_nextID;
+  s_nextID++;
+  return oid;
 }

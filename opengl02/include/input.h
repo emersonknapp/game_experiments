@@ -1,6 +1,7 @@
 #pragma once
 
 #include <list>
+#include "object.h"
 #define INPUT_DEBUG false
 
 enum InputType {NORM_DOWN, NORM_UP, SPEC_DOWN, SPEC_UP};
@@ -16,7 +17,7 @@ class Controlled {
 
 ///Controller interface is the way for an outside source to control a game entity
 ///Could be user input or AI
-class Controller {
+class Controller : public Object {
 public:
   virtual ~Controller() {}
   virtual void setControlled(Controlled*)=0;

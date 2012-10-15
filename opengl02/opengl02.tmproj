@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>si_game.cpp</string>
+	<string>include/si_data.h</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -17,6 +17,18 @@
 			<string>include</string>
 		</dict>
 		<dict>
+			<key>filename</key>
+			<string>si_states.cpp</string>
+			<key>lastUsed</key>
+			<date>2012-10-15T20:16:37Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>input.cpp</string>
+			<key>lastUsed</key>
+			<date>2012-10-15T20:16:29Z</date>
+		</dict>
+		<dict>
 			<key>name</key>
 			<string>lib</string>
 			<key>regexFolderFilter</key>
@@ -26,91 +38,123 @@
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>makefile</string>
-			<key>lastUsed</key>
-			<date>2012-10-02T00:06:12Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>input.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-10-02T09:40:01Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
 			<string>main.cpp</string>
 			<key>lastUsed</key>
-			<date>2012-10-01T23:22:27Z</date>
+			<date>2012-10-15T20:19:27Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>makefile</string>
+			<key>lastUsed</key>
+			<date>2012-10-15T20:17:07Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>quits.cpp</string>
 			<key>lastUsed</key>
-			<date>2012-10-02T00:02:22Z</date>
+			<date>2012-10-13T18:44:39Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>si_game.cpp</string>
 			<key>lastUsed</key>
-			<date>2012-10-02T09:42:41Z</date>
+			<date>2012-10-15T21:39:25Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>state.cpp</string>
 			<key>lastUsed</key>
-			<date>2012-10-02T03:55:06Z</date>
+			<date>2012-09-30T02:14:05Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>viewport.cpp</string>
 			<key>lastUsed</key>
-			<date>2012-10-02T01:00:06Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>renderer.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-10-02T01:00:08Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>renderable.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-10-02T00:30:16Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>resource.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-10-02T03:55:09Z</date>
+			<date>2012-09-27T08:52:21Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>147</integer>
 	<key>metaData</key>
 	<dict>
-		<key>include/game.h</key>
+		<key>include/input.h</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>30</integer>
+				<integer>3</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>include/input.h</key>
+		<key>include/main.h</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>13</integer>
+				<integer>8</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>include/object.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>43</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>include/quits.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>include/si_data.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>1</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>include/si_entities.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -122,9 +166,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>12</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>59</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>8</integer>
+		</dict>
+		<key>include/si_states.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>17</integer>
+				<key>line</key>
+				<integer>4</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -136,30 +194,44 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>24</integer>
+				<integer>22</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>2</integer>
+			<integer>0</integer>
+		</dict>
+		<key>include/viewport.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>8</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>input.cpp</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
+				<integer>60</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>27</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
-		<key>quits.cpp</key>
+		<key>main.cpp</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -171,50 +243,97 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>3</integer>
 		</dict>
-		<key>si_game.cpp</key>
+		<key>makefile</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>8</integer>
+				<integer>93</integer>
 				<key>line</key>
-				<integer>161</integer>
+				<integer>35</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>153</integer>
+			<integer>4</integer>
+		</dict>
+		<key>si_states.cpp</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>10</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
 		</dict>
 		<key>state.cpp</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>23</integer>
 				<key>line</key>
-				<integer>89</integer>
+				<integer>28</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>52</integer>
+			<integer>3</integer>
+		</dict>
+		<key>viewport.cpp</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>18</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>include/game.h</string>
-		<string>si_game.cpp</string>
-		<string>include/si_game.h</string>
 		<string>include/state.h</string>
 		<string>include/input.h</string>
+		<string>include/object.h</string>
+		<string>include/si_data.h</string>
+		<string>main.cpp</string>
+		<string>makefile</string>
+		<string>include/si_game.h</string>
+		<string>include/si_states.h</string>
 		<string>input.cpp</string>
+		<string>si_states.cpp</string>
+		<string>include/viewport.h</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
-	<key>showFileHierarchyPanel</key>
-	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>include</key>
@@ -226,6 +345,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{-0, -0}, {1276, 778}}</string>
+	<string>{{610, -0}, {666, 778}}</string>
 </dict>
 </plist>

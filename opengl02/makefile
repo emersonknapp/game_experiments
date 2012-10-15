@@ -33,7 +33,7 @@ CCOPTS = $(OPT) $(INCS) -c
 LDOPTS = $(OPT) $(INCS) $(LIBS)
 
 #USEFUL INFORMATION
-SOURCES=renderer.cpp renderable.cpp quits.cpp input.cpp viewport.cpp state.cpp si_game.cpp main.cpp
+SOURCES=renderer.cpp renderable.cpp quits.cpp input.cpp viewport.cpp state.cpp si_states.cpp si_game.cpp main.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=main
 
