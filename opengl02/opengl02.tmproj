@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>include/si_data.h</string>
+	<string>include/si_states.h</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,15 +18,9 @@
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>si_states.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-10-15T20:16:37Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
 			<string>input.cpp</string>
 			<key>lastUsed</key>
-			<date>2012-10-15T20:16:29Z</date>
+			<date>2012-10-16T03:24:44Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -59,6 +53,12 @@
 			<string>si_game.cpp</string>
 			<key>lastUsed</key>
 			<date>2012-10-15T21:39:25Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>si_states.cpp</string>
+			<key>lastUsed</key>
+			<date>2012-10-16T03:24:44Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -133,20 +133,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>include/si_data.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>include/si_entities.h</key>
 		<dict>
 			<key>caret</key>
@@ -180,56 +166,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>17</integer>
+				<integer>37</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>30</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>include/state.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>29</integer>
-				<key>line</key>
-				<integer>22</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>include/viewport.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>8</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>input.cpp</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>60</integer>
-				<key>line</key>
-				<integer>27</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>2</integer>
 		</dict>
 		<key>main.cpp</key>
 		<dict>
@@ -258,36 +202,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>4</integer>
-		</dict>
-		<key>si_states.cpp</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>21</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>10</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>21</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
 		</dict>
 		<key>state.cpp</key>
 		<dict>
@@ -320,20 +234,12 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>include/state.h</string>
-		<string>include/input.h</string>
-		<string>include/object.h</string>
-		<string>include/si_data.h</string>
-		<string>main.cpp</string>
-		<string>makefile</string>
-		<string>include/si_game.h</string>
 		<string>include/si_states.h</string>
-		<string>input.cpp</string>
-		<string>si_states.cpp</string>
-		<string>include/viewport.h</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
+	<key>showFileHierarchyPanel</key>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>include</key>
@@ -345,6 +251,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{610, -0}, {666, 778}}</string>
+	<string>{{-0, -0}, {1276, 778}}</string>
 </dict>
 </plist>

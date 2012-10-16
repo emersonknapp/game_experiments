@@ -3,6 +3,9 @@
 #include "input.h"
 #include "state.h"
 #include "quits.h"
+#include "si_data.h"
+#include "si_entities.h"
+#include "Eigen/Core"
 
 
 /* TITLE */
@@ -20,8 +23,6 @@ public:
   void setControlled(Controlled* c) { m_menu = (M_Title*)(c);}
   virtual bool key(InputType itype, int k, double x, double y);
   Controlled* getControlled();
-  //void addControlled(Controlled* mt);
-  //void removeControlled(Controlled* mt);
 private:
   M_Title* m_menu;
 };
@@ -30,8 +31,11 @@ private:
 class S_Play : public State {
 public:
   S_Play();
-  //                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                std::queue<StateUpdate>* update(int mils);
-  //std::vector<Renderable*>& getRenderables();
+  std::queue<StateUpdate>* update(int mils);
+  std::vector<Renderable*>& getRenderables();
+private:
+  std::vector<Entity*> m_entities;
+  Vector4i m_sceneBounds;
 };
 
 class Ctrl_Play : public InputController {
@@ -40,7 +44,6 @@ public:
   void setControlled(Controlled* c) { m_playstate = (S_Play*)(c);}
   Controlled* getControlled() {return m_playstate;}
   bool key(InputType itype, int k, double x, double y);
-
 private:
   S_Play* m_playstate;
 };

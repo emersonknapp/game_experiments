@@ -84,6 +84,13 @@ S_Play::S_Play() {
   m_renderables.push_back(new R_Text(-1,.7,"Play", 15));
 }
 
+std::queue<StateUpdate>* S_Play::update(int mils) {
+  return &m_lastUpdate;
+}
+std::vector<Renderable*>& S_Play::getRenderables() {
+  return m_renderables;
+}
+
 bool Ctrl_Play::key(InputType itype, int k, double x, double y) {
   if (m_playstate == NULL) {
     Warning("Controller accessing NULL controlled.");
