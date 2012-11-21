@@ -25,27 +25,34 @@ static struct timeval lastTime;
 #include <Eigen/Core>
 #include <FTGL/ftgl.h>
 //GAME STUFF
-#include "input.h"
 #include "quits.h"
-#include "renderable.h"
-#include "renderer.h"
 #include "state.h"
-#include "viewport.h"
+#include "input.h"
 #include "si_data.h"
 #include "si_states.h"
+#include "viewport.h"
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
 #define WINDOW_CAPTION "Space Intruders"
 
+class SI_Game;
+
 class SIObjectFactory {
 public:
-  State* getNewState(eSIObject);
-  InputController* getNewStateInputController(eSIObject);
+  State* getNewState(eSIObject, SI_Game*);
+  InputController* getNewStateInputController(eSIObject, Object*);
 private:
+  void assignOID(Object* o);
   ObjectID nextID();
   static ObjectID s_nextID;
 };
+
+struct StateCtrlPair {
+  State* state;
+  InputController* ctrl;
+};
+
 
 class SI_Game {
 public:
@@ -68,21 +75,27 @@ public:
   void push(eSIObject); //pushes new state
   void pop(); //changes to previous state, returns current
   State* peek(); //returns current state
+  StateCtrlPair peekPair();
   State* peekPrev(); //returns state one down the stack, NULL if none
   void swap(eSIObject s); //convenience function, pop();push(s)  
   bool update(int mils);
   void kill(); //END EVERYTHING
   bool isEmpty();
-  std::vector<Renderable*>& getRenderables();
+  
+  virtual Renderer* getRenderer();
+  virtual Collision* getCollision();
+  virtual Physics* getPhysics();
   
 private:
-  
+  void handleKey(InputType itype, int key, int x, int y);
   Viewport* m_viewport;
-  InputManager* m_inputMan;
   bool m_running;
-  Renderer* m_renderer;
   SIObjectFactory* m_factory;
-  std::vector<State*> m_states;
+  std::vector<StateCtrlPair> m_states;
+  
+  Collision* m_collision;
+  Renderer* m_renderer;
+  Physics* m_physics;
 };
 
 

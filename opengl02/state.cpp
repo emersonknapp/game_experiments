@@ -9,6 +9,11 @@ State::State() {
   m_running = true;
 }
 
+void State::postCreate(Renderer* rend) {
+  m_renderer = rend;
+  init();
+}
+
 bool State::running() {
   return m_running;
 }
@@ -17,16 +22,18 @@ void State::kill() {
   m_running = false;
 } 
 
-std::vector<Renderable*>& State::getRenderables() {
-  return m_renderables;
+void State::draw(Viewport* viewport) {
+  if (m_renderer != NULL) {
+    m_renderer->render();
+  }
 }
 
 queue<StateUpdate>* State::update(int mils) {
   if (!running()) {
-    m_lastUpdate.push((StateUpdate){ST_POP, SI_NULL, 0});
+    m_updates.push((StateUpdate){ST_POP, SI_NULL, 0});
   }
   
-  return &m_lastUpdate;
+  return &m_updates;
 }
 
 //************

@@ -3,8 +3,9 @@
 #include "input.h"
 #include "state.h"
 #include "quits.h"
+#include "entity.h"
+#include "scene.h"
 #include "si_data.h"
-#include "si_entities.h"
 #include "Eigen/Core"
 
 
@@ -12,38 +13,34 @@
 class M_Title : public Menu {
 public:
   M_Title();
+  void init();
   std::queue<StateUpdate>* update(int mils);
   void selectItem(int i);
-  std::vector<Renderable*>& getRenderables();
+private:
 };
 
-class Ctrl_M_Title : public InputController {
+class M_Title_Ctrl : public InputController {
 public:
-  Ctrl_M_Title() : m_menu(NULL) {}
-  void setControlled(Controlled* c) { m_menu = (M_Title*)(c);}
-  virtual bool key(InputType itype, int k, double x, double y);
-  Controlled* getControlled();
-private:
-  M_Title* m_menu;
+  bool key(InputType itype, int k, double x, double y); //takes x and y normalized to screen.
+  void setControlled(Object* cont);
+protected:
+  M_Title* m_controlled;
 };
 
 /* PLAY */
 class S_Play : public State {
 public:
   S_Play();
+  void init();
   std::queue<StateUpdate>* update(int mils);
-  std::vector<Renderable*>& getRenderables();
 private:
-  std::vector<Entity*> m_entities;
-  Vector4i m_sceneBounds;
+  SI_Scene* m_scene;
 };
 
-class Ctrl_Play : public InputController {
+class S_Play_Ctrl : public InputController {
 public:
-  Ctrl_Play() : m_playstate(NULL) {}
-  void setControlled(Controlled* c) { m_playstate = (S_Play*)(c);}
-  Controlled* getControlled() {return m_playstate;}
   bool key(InputType itype, int k, double x, double y);
-private:
-  S_Play* m_playstate;
+  void setControlled(Object* cont);
+protected:
+  S_Play* m_controlled;
 };

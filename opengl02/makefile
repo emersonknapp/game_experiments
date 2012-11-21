@@ -15,16 +15,19 @@ INCS += -I./include
 
 #Mac specific includes
 ifeq ($(UNAME), Darwin)
-#LIBS += -L"/System/Library/Frameworks/OpenGL.framework/Libraries" 
-LIBS += -L"/usr/X11/lib"
-LIBS += -L"/usr/local/Cellar/ftgl/2.1.3-rc5/lib"
 
-#INCS += -I"/System/Library/Frameworks/OpenGL.framework/Headers"
-#INCS += -I"/System/Library/Frameworks/GLUT.framework/Headers"
+  #x11/opengl
+LIBS += -L"/usr/X11/lib"
 INCS += -I"/usr/X11/include/GL"
+
+  #FreeType GL: fonts
+LIBS += -L"/usr/local/Cellar/ftgl/2.1.3-rc5/lib"
 INCS += -I"/usr/local/Cellar/ftgl/2.1.3-rc5/include"
 INCS += -I"/usr/X11/include/freetype2"
+
+  #Eigen: linear algebra
 INCS += -I"/usr/local/Cellar/eigen/3.0.5/include/eigen3"
+
 endif
 
 
@@ -33,7 +36,7 @@ CCOPTS = $(OPT) $(INCS) -c
 LDOPTS = $(OPT) $(INCS) $(LIBS)
 
 #USEFUL INFORMATION
-SOURCES=renderer.cpp renderable.cpp quits.cpp input.cpp viewport.cpp state.cpp si_states.cpp si_entities.cpp si_game.cpp main.cpp
+SOURCES=main.cpp si_game.cpp state.cpp renderable.cpp render.cpp viewport.cpp quits.cpp si_states.cpp scene.cpp physics.cpp entity.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=main
 

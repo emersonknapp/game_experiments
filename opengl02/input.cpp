@@ -5,6 +5,7 @@
 
 using namespace std;
 
+/*
 InputManager::InputManager() {
 }
 
@@ -36,14 +37,5 @@ void InputManager::removeControllerFor(Controlled* ctrld) {
       m_controllers.erase(it);
     }
   }
-}
-
-/*
-void Controlled::registerController(InputController* ic) {
-  m_ctrl = ic;
-}
-
-void Controlled::unregisterController(InputController* ic) {
-  m_ctrl->removeControlled(this);
 }
 */

@@ -3,102 +3,180 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>include/si_states.h</string>
+	<string>include/render.h</string>
 	<key>documents</key>
 	<array>
-		<dict>
-			<key>expanded</key>
-			<true/>
-			<key>name</key>
-			<string>include</string>
-			<key>regexFolderFilter</key>
-			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>sourceDirectory</key>
-			<string>include</string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>input.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-11-13T09:58:30Z</date>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>lib</string>
-			<key>regexFolderFilter</key>
-			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>sourceDirectory</key>
-			<string>lib</string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>main.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-11-13T09:36:27Z</date>
-		</dict>
 		<dict>
 			<key>filename</key>
 			<string>makefile</string>
 			<key>lastUsed</key>
-			<date>2012-10-16T06:07:22Z</date>
+			<date>2012-11-13T12:27:50Z</date>
 		</dict>
 		<dict>
-			<key>filename</key>
-			<string>quits.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-11-13T09:54:25Z</date>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>filename</key>
+					<string>include/main.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T11:57:28Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>include/entity.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:45:41Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>include/state.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:45:06Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>include/quits.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T09:46:14Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>include/input.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:45:04Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>include/object.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:18:07Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>include/si_data.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:01:43Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>include/si_game.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:42:07Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>include/si_states.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:44:58Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>include/viewport.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T09:46:19Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>include/render.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:48:44Z</date>
+					<key>selected</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>include/scene.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:47:02Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>include/physics.h</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:46:13Z</date>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<true/>
+			<key>name</key>
+			<string>Headers</string>
 		</dict>
 		<dict>
-			<key>filename</key>
-			<string>si_entities.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-11-13T08:08:16Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>si_game.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-11-13T09:36:18Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>renderable.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-11-13T08:50:09Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>render.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-11-13T08:10:12Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>resource.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-11-13T09:36:27Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>si_states.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-11-13T08:47:27Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>state.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-11-13T09:24:52Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>viewport.cpp</string>
-			<key>lastUsed</key>
-			<date>2012-11-13T09:44:56Z</date>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>filename</key>
+					<string>main.cpp</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T09:20:20Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>si_game.cpp</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:40:45Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>si_states.cpp</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:37:17Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>state.cpp</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T11:55:00Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>input.cpp</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:13:23Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>render.cpp</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:48:44Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>viewport.cpp</string>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>quits.cpp</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:12:39Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>scene.cpp</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:46:52Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>physics.cpp</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:45:50Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>entity.cpp</string>
+					<key>lastUsed</key>
+					<date>2012-11-13T12:27:26Z</date>
+				</dict>
+			</array>
+			<key>expanded</key>
+			<true/>
+			<key>name</key>
+			<string>Source</string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>147</integer>
+	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
 		<key>include/entity.h</key>
@@ -157,6 +235,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>include/physics.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>16</integer>
+				<key>line</key>
+				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>include/quits.h</key>
 		<dict>
 			<key>caret</key>
@@ -185,20 +277,6 @@
 			<key>firstVisibleLine</key>
 			<integer>10</integer>
 		</dict>
-		<key>include/renderable.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>2</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>include/scene.h</key>
 		<dict>
 			<key>caret</key>
@@ -226,20 +304,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>include/si_entities.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>6</integer>
 		</dict>
 		<key>include/si_game.h</key>
 		<dict>
@@ -341,35 +405,19 @@
 				<integer>38</integer>
 			</dict>
 		</dict>
-		<key>makefile</key>
+		<key>physics.cpp</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>0</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>50</integer>
-			</dict>
 		</dict>
 		<key>quits.cpp</key>
 		<dict>
@@ -399,49 +447,19 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>renderable.cpp</key>
+		<key>scene.cpp</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
 				<integer>1</integer>
+				<key>line</key>
+				<integer>8</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>si_entities.cpp</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>2</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>85</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>2</integer>
-			</dict>
 		</dict>
 		<key>si_game.cpp</key>
 		<dict>
@@ -502,14 +520,16 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>include/si_game.h</string>
-		<string>include/viewport.h</string>
-		<string>quits.cpp</string>
-		<string>input.cpp</string>
-		<string>viewport.cpp</string>
-		<string>include/si_data.h</string>
+		<string>include/scene.h</string>
+		<string>include/render.h</string>
+		<string>render.cpp</string>
+		<string>include/input.h</string>
+		<string>include/state.h</string>
+		<string>include/entity.h</string>
 		<string>include/si_states.h</string>
-		<string>include/si_entities.h</string>
+		<string>include/physics.h</string>
+		<string>physics.cpp</string>
+		<string>scene.cpp</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
@@ -517,7 +537,14 @@
 	<true/>
 	<key>treeState</key>
 	<dict>
-		<key>include</key>
+		<key>Headers</key>
+		<dict>
+			<key>isExpanded</key>
+			<true/>
+			<key>subItems</key>
+			<dict/>
+		</dict>
+		<key>Source</key>
 		<dict>
 			<key>isExpanded</key>
 			<true/>
@@ -526,6 +553,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{-0, -0}, {638, 778}}</string>
+	<string>{{-9, 0}, {1276, 778}}</string>
 </dict>
 </plist>

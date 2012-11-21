@@ -1,16 +1,18 @@
 #include "si_game.h"
 
 #define CALLBACK_DEBUG false
-#define STATE_DEBUG false
 #define TITLE_DEBUG false
+#define OBJECT_DEBUG false
 
 using namespace std;
 
 SI_Game::SI_Game(int argc, char* argv[]) {
   m_viewport = new Viewport(SCREEN_WIDTH, SCREEN_HEIGHT);
-  m_inputMan = new InputManager();
-  m_renderer = new Renderer();
   m_factory = new SIObjectFactory();
+  
+  m_renderer = new Renderer();
+  m_collision = new Collision();
+  m_physics = new Physics();
   
   m_running = false;
 
@@ -31,23 +33,19 @@ SI_Game::SI_Game(int argc, char* argv[]) {
 
 SI_Game::~SI_Game() {
   delete m_viewport;
-  delete m_inputMan;
-  delete m_renderer;
   delete m_factory;
   
-  for (vector<State*>::iterator it = m_states.begin(); it <= m_states.end(); it++) {
+  /*
+  for (vector<StateCtrlPair>::iterator it = m_states.begin(); it <= m_states.end(); it++) {
     delete *it;
   }
+  */
 }
 
 void SI_Game::run() {
   if (STATE_DEBUG) cout << "Running Game" << endl;
   
   push(ST_TITLE);
-  
-  //InputController* start_ctrl = m_controllerFactory->getNewStateInputController(ST_TITLE);
-  //start_ctrl->setControlled((Controlled*)peek());
-  //m_inputMan->addController(start_ctrl);
     
   m_running = true;
   
@@ -66,29 +64,32 @@ Viewport* SI_Game::getViewport() {
 // Game State Managing Methods
 //****************************************************
 void SI_Game::push(eSIObject s){
-  State* newState = m_factory->getNewState(s);
+  State* newState = m_factory->getNewState(s, this);
   if (newState != NULL) {
-    m_states.push_back(newState);
-    InputController* newController = m_factory->getNewStateInputController(s);
-    if (newController != NULL) {
-      newController->setControlled(newState);
-      m_inputMan->addController(newController);
-    }
+    InputController* newController = m_factory->getNewStateInputController(s, newState);
+    StateCtrlPair newPair;
+    newPair.state = newState;
+    newPair.ctrl = newController;
+    m_states.push_back(newPair);
   }
+  if (STATE_DEBUG) cout << "Entering state " << newState->getOID() << " with type " << s << endl;
 }
 
 void SI_Game::pop(){
-  State* s = m_states.back();
+  StateCtrlPair s = m_states.back();
   m_states.pop_back();
-  m_inputMan->removeControllerFor(s);
+  if (STATE_DEBUG) cout << "Leaving state " << s.state->getOID() << endl;
 }
 
 State* SI_Game::peek(){
+  return m_states.back().state;
+}
+StateCtrlPair SI_Game::peekPair() {
   return m_states.back();
 }
 
 State* SI_Game::peekPrev(){
-  return m_states.at(m_states.size()-2);
+  return m_states.at(m_states.size()-2).state;
 }
 
 void SI_Game::swap(eSIObject s){
@@ -134,10 +135,6 @@ bool SI_Game::isEmpty(){
   return m_states.empty();
 }
 
-std::vector<Renderable*>& SI_Game::getRenderables() {
-  return peek()->getRenderables();
-}
-
 
 //****************************************************
 // Handlers
@@ -151,7 +148,7 @@ void SI_Game::draw() {
 	glLoadIdentity();
 	
 	if (!isEmpty())
-    m_renderer->render(getRenderables());
+    peek()->draw(m_viewport);
   
   /*
   FTGLPixmapFont font("./data/trebuchet.ttf");
@@ -168,7 +165,7 @@ void SI_Game::draw() {
 }
 
 void SI_Game::reshapeViewport(int w, int h) {
-   if (CALLBACK_DEBUG) cout << "game_reshapeviewport" << endl;
+  if (CALLBACK_DEBUG) cout << "game_reshapeviewport" << endl;
 	m_viewport->w = w;
 	m_viewport->h = h;
 	
@@ -191,72 +188,110 @@ void SI_Game::idle() {
 #else
 	timeval currentTime;
 	gettimeofday(&currentTime, NULL);
-	dt = 1e3*(currentTime.tv_sec - lastTime.tv_sec) + 1e-3*(currentTime.tv_usec - lastTime.tv_usec);
+	dt = 1000*(currentTime.tv_sec - lastTime.tv_sec) + 1e-3*(currentTime.tv_usec - lastTime.tv_usec);
 #endif
 	lastTime = currentTime;
 	
-	bool keepGoing = update(dt); //TODO: this should be actual time update
+	bool keepGoing = update(dt);
   if (!keepGoing) quitProgram();
 	glutPostRedisplay();
 }
 
 void SI_Game::normalKeyDown(unsigned char key, int x, int y) {
-  m_inputMan->key(NORM_DOWN, (int)key, 0.0, 0.0);
+  handleKey(NORM_DOWN, (int)key, x, y);
 }
 
 void SI_Game::normalKeyUp(unsigned char key, int x, int y) {
-  m_inputMan->key(NORM_UP, (int)key, 0.0, 0.0); //TODO: actual value mapping
+  handleKey(NORM_UP, (int)key, x, y);
 }
 
 void SI_Game::specialKeyDown(int key, int x, int y) {
-	m_inputMan->key(SPEC_DOWN, key, 0.0, 0.0); //TODO: actual value mapping
+  handleKey(SPEC_DOWN, key, x, y);
 }
 
 void SI_Game::specialKeyUp(int key, int x, int y) {
-	m_inputMan->key(SPEC_UP, key, 0.0, 0.0); //TODO: actual value mapping
+  handleKey(SPEC_UP, key, x, y);
+}
+
+void SI_Game::handleKey(InputType itype, int key, int x, int y) {
+  if (peekPair().ctrl->key(itype, key, x, y))
+    return;
+  else
+    return; //TODO: pass input into state
+}
+
+//****************************************************
+// Getters/Setters
+//****************************************************
+
+Renderer* SI_Game::getRenderer() {
+  return m_renderer;
+}
+
+Collision* SI_Game::getCollision() {
+  return m_collision;
+}
+
+Physics* SI_Game::getPhysics() {
+  return m_physics;
 }
 
 //****************************************************
 // Factories
 //****************************************************
 
-State* SIObjectFactory::getNewState(eSIObject es) {
+void SIObjectFactory::assignOID(Object* o) {
+  if (o != NULL) {
+    ObjectID oid = nextID();
+    o->setOID(oid);
+  }
+}
+
+State* SIObjectFactory::getNewState(eSIObject es, SI_Game* game) {
+  State* ret = NULL;
   switch (es) {
     case ST_TITLE:
-      return new M_Title();
+      ret = new M_Title();
+      break;
     case ST_PLAY:
-      return new S_Play();
+      ret = new S_Play();
+      break;
     default:
       stringstream ss;
       ss << "Tried to initialize undefined state " << es;
       Error(ss.str());
-      return NULL;
+      ret = NULL;
   }
+  assignOID(ret);
+  ret->postCreate(game->getRenderer());
+  if (RENDER_DEBUG) cout << "Created object " << ret->getOID() << " with renderer " << game->getRenderer() << endl;
+  return ret;
 }
 
-InputController* SIObjectFactory::getNewStateInputController(eSIObject es) {
-  InputController* ret;
+InputController* SIObjectFactory::getNewStateInputController(eSIObject es, Object* controlled) {
+  InputController* ret = NULL;
   switch (es) {
     case ST_TITLE:
-      ret = new Ctrl_M_Title();
+      ret = new M_Title_Ctrl();
       break;
     case ST_PLAY:
-      ret = new Ctrl_Play();
+      ret = new S_Play_Ctrl();
       break;
     default:
       stringstream ss;
       ss << "Tried to initialize controller for undefined state " << es;
       Error(ss.str());
-      return NULL;
   }
-  ObjectID oid = nextID();
-  ret->setOID(oid);
+  assignOID(ret);
+  ret->setControlled(controlled);
   return ret;
 }
+
 
 ObjectID SIObjectFactory::s_nextID = 0;
 
 ObjectID SIObjectFactory::nextID() {
+  if (OBJECT_DEBUG) cout << "Creating new Object ID " << s_nextID << endl;
   ObjectID oid = s_nextID;
   s_nextID++;
   return oid;

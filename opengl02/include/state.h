@@ -3,10 +3,12 @@
 #include <vector>
 #include <queue>
 #include <string>
-#include "renderable.h"
-#include "input.h"
 #include "si_data.h"
 #include "object.h"
+#include "viewport.h"
+#include "render.h"
+
+#define STATE_DEBUG true
 
 
 //Allows for message passing from state back up to state manager on update.
@@ -20,17 +22,21 @@ struct StateUpdate {
 
 using namespace std;
 
-class State : public Object, public Controlled {
+class State : public Object {
 public:
   State();
+  virtual void init()=0;
+  virtual void postCreate(Renderer* rend);
   virtual queue<StateUpdate>* update(int mils);
+  virtual void draw(Viewport* viewport);
   virtual bool running(); //return false when state is finished, true otherwise
   virtual void kill(); //make this state end immediately on next update
-  virtual vector<Renderable*>& getRenderables();
 protected:
   bool m_running;
-  queue<StateUpdate> m_lastUpdate;
-  std::vector<Renderable*> m_renderables;
+  queue<StateUpdate> m_updates;
+  Renderer* m_renderer;
+private:
+  
 };
 
 class Menu : public State {
@@ -57,7 +63,7 @@ public:
   
   std::vector<Renderable*>& getRenderables();
   
-  //TODO: get info for renderer?
+  
 private:
   std::vector<State*> m_states;
 };
