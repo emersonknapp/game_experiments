@@ -3,6 +3,12 @@
 #include <map>
 #include <vector>
 #include "object.h"
+#include "util.h"
+
+///Movement information, for now just velocity
+struct Movement {
+  Vector2f velocity;
+};
 
 struct PhysicsInfo {
   Transform2D* transform;

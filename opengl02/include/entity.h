@@ -1,11 +1,9 @@
 #pragma once
 
 #include <Eigen/Core>
-#include <map>
-#include <queue>
+#include <string>
 #include "object.h"
-#include "render.h"
-#include "physics.h"
+#include "attributes.h"
 
 using namespace Eigen;
 using namespace std;
@@ -16,29 +14,40 @@ enum eEntityUpdate {
   SPAWN
 };
 
-//TODO: probably move imp to si_entities?
-/*
-struct SpawnInfo {
-  eSIObject type;
-  PhysicsInfo* physicsInfo;
-};
-*/
-
 class Entity : public Object {
 public:
-  Entity(Collision* col, Renderer* rend, Physics* phys);
-  virtual void init()=0;
-  virtual void update(int mils)=0;
-  virtual eEntityUpdate postUpdate()=0;
-  //queue<eSIObject> getSpawns(); //TODO
+  Entity();
+  virtual eEntityUpdate update(int mils);
+  
+  virtual void setRenderable(Renderable* r);
+  virtual Renderable* getRenderable();
+  virtual bool isRenderable();
+
+  virtual void setCollideInfo(CollideInfo* c);
+  virtual CollideInfo* getCollideInfo();
+  virtual bool isCollidable();
+  
+  virtual void setPhysInfo(PhysInfo* p);
+  virtual PhysInfo* getPhysInfo();
+  virtual bool isMovable();
+  
+  virtual void setTransform(Transform2f* t);
+  virtual Transform2f* getTransform();
+  
+  virtual void translate(Vector2f v);
+  virtual void rotate(Vector2f v);
+  virtual void scale(Vector2f v);
+  
 protected:
-  Transform2D* m_transform;
-  Movement* m_movement;
+  Transform2f* m_transform;
+  PhysInfo* m_physInfo;
   Renderable* m_renderable;
-  Collision* m_collision;
-  Renderer* m_renderer;
-  Physics* m_physics;
-  //queue<eSIObject> spawns;
+  CollideInfo* m_collideInfo;
+};
+
+class TextEntity : public Entity {
+public:
+  TextEntity(string text, int size);
 };
 
 

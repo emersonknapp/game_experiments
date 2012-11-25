@@ -1,24 +1,19 @@
 #pragma once
 
 #include "entity.h"
-#include "input.h"
-#include <map>
+
+#include <set>
+#include <vector>
 
 class Scene {
 public:
+  //Scene();
+  virtual void addEntity(Entity* ent);
+  virtual void removeEntity(Entity* ent);
+  virtual std::set<Entity*> getEntities();
+  virtual std::vector<Entity*> getRenderableEntities();
+  virtual std::vector<Entity*> getCollidableEntities();
+  virtual std::vector<Entity*> getMovableEntities();
 protected:
-  //Physics* m_physics;
-  //Collision* m_collision;
-  Renderer* m_renderer;
-  //InputManager* m_input;
-  //Bounds* m_bounds;
-};
-
-class SI_Scene : public Scene {
-public:
-  SI_Scene();
-  void addEntity(ObjectID ent, Entity* rend);
-  void removeEntity(ObjectID ent);
-private:
-  std::map<ObjectID, Entity*> m_entities;
+  std::set<Entity*> m_entities;
 };

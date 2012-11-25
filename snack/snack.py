@@ -3,7 +3,7 @@ from game import *
 WINDOW_CAPTION = 'Snackington'
 GAME_FONT = 'trebuchet.ttf'
 SCREEN_SIZE = 640,480
-FRAMERATE = 15
+FRAMERATE = 10
 DEFAULT_SEGS = 5
 BLOCK_SIZE = 20
 

@@ -13,13 +13,12 @@ void M_Title::init() {
   //m_renderables.push_back(new R_Text(-1,.5,"Title", 72));
   //m_renderables.push_back(new R_Text(-1,.2,"[P]lay", 36));
   //m_renderables.push_back(new R_Text(-1,-.1,"[Q]uit", 36));
-  Transform2D titleTextTr;
-  titleTextTr.translation = Vector2f(-1, .5);
-  RenderInfo titleTextRI;
-  titleTextRI.transform = titleTextTr;
-  titleTextRI.renderable = new R_Text("Title", 72);
-  
-  m_renderer->addRenderable(m_oid, titleTextRI);
+  TextEntity* titleText = new TextEntity(m_collision, m_renderer, m_physics, "Title", 72);
+  titleText->translate(Vector2f(-1, .5))
+  m_entities.push_back()
+  Transform2D titleTextTr();
+  titleTextTr.translate(Vector2f(-1, .5));
+
 }
 
 queue<StateUpdate>* M_Title::update(int mils) {

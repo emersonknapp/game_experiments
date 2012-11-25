@@ -79,6 +79,7 @@ void SI_Game::pop(){
   StateCtrlPair s = m_states.back();
   m_states.pop_back();
   if (STATE_DEBUG) cout << "Leaving state " << s.state->getOID() << endl;
+  delete s.state;
 }
 
 State* SI_Game::peek(){

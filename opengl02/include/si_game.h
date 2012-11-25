@@ -38,21 +38,10 @@ static struct timeval lastTime;
 
 class SI_Game;
 
-class SIObjectFactory {
-public:
-  State* getNewState(eSIObject, SI_Game*);
-  InputController* getNewStateInputController(eSIObject, Object*);
-private:
-  void assignOID(Object* o);
-  ObjectID nextID();
-  static ObjectID s_nextID;
-};
-
 struct StateCtrlPair {
   State* state;
   InputController* ctrl;
 };
-
 
 class SI_Game {
 public:

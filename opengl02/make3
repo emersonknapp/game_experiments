@@ -36,9 +36,9 @@ CCOPTS = $(OPT) $(INCS) -c
 LDOPTS = $(OPT) $(INCS) $(LIBS)
 
 #USEFUL INFORMATION
-SOURCES=main.cpp si_game.cpp state.cpp renderable.cpp render.cpp viewport.cpp quits.cpp si_states.cpp scene.cpp physics.cpp entity.cpp util.cpp
+SOURCES=test.cpp factory.cpp renderer.cpp scene.cpp state.cpp statemanager.cpp transform.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=main
+EXECUTABLE=test
 
 #RULES
 all: $(SOURCES) $(EXECUTABLE)

@@ -17,6 +17,7 @@ public:
   std::queue<StateUpdate>* update(int mils);
   void selectItem(int i);
 private:
+  vector<Entity*> m_entities;
 };
 
 class M_Title_Ctrl : public InputController {

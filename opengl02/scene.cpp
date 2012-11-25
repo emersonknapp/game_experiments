@@ -1,17 +1,42 @@
 #include "scene.h"
 
-SI_Scene::SI_Scene() {
-  //m_physics = new Physics(); //TODO
-  //m_collision = new Collision(); //TODO
-  //m_renderer = new Renderer(); //TODO
-  //m_input = new InputManager(); //TODO
-  //m_bounds = new Bounds; //TODO 
+void Scene::addEntity(Entity* ent) {
+  m_entities.insert(ent);
 }
-
-void SI_Scene::addEntity(ObjectID entOID, Entity* entPtr) {
-  m_entities[entOID] = entPtr;
-}
-
-void SI_Scene::removeEntity(ObjectID ent) {
+void Scene::removeEntity(Entity* ent) {
   m_entities.erase(ent);
+}
+
+std::set<Entity*> Scene::getEntities() {
+  return m_entities;
+}
+
+std::vector<Entity*> Scene::getRenderableEntities() {
+  std::set<Entity*>::iterator it;
+  std::vector<Entity*> ret;
+  for (it = m_entities.begin(); it != m_entities.end(); it++) {
+    if ((*it)->isRenderable())
+      ret.push_back(*it);
+  }
+  return ret;
+}
+
+std::vector<Entity*> Scene::getCollidableEntities() {
+  std::set<Entity*>::iterator it;
+  std::vector<Entity*> ret;
+  for (it = m_entities.begin(); it != m_entities.end(); it++) {
+    if ((*it)->isCollidable())
+      ret.push_back(*it);
+  }
+  return ret;
+}
+
+std::vector<Entity*> Scene::getMovableEntities() {
+  std::set<Entity*>::iterator it;
+  std::vector<Entity*> ret;
+  for (it = m_entities.begin(); it != m_entities.end(); it++) {
+    if ((*it)->isMovable())
+      ret.push_back(*it);
+  }
+  return ret;
 }
