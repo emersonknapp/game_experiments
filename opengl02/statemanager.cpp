@@ -1,7 +1,6 @@
 #include "statemanager.h"
 
-StateManager::StateManager(ObjectFactory* fact){
-  m_factory = fact;
+StateManager::StateManager(){
 }
 
 StateManager::~StateManager() {

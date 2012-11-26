@@ -1,6 +1,6 @@
 #include "entity.h"
-  
-Entity::Entity() {
+
+Entity::Entity() : Object() {
   m_renderable = NULL;
   m_physInfo = NULL;
   m_collideInfo = NULL;

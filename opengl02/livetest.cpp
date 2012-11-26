@@ -3,14 +3,9 @@
 #include "state.h"
 #include "statemanager.h"
 #include "controllermanager.h"
-#include "factory.h"
 #include "entity.h"
 
 StateManager* g_game;
-
-class TestFactory : public ObjectFactory {
-public:  
-};
 
 class TestStateController : public StateController {
 public:
@@ -39,10 +34,8 @@ public:
 
 class TestState : public State {
 protected:
-  TestFactory* m_factory;
 public:
-  TestState(TestFactory* fact) : State(fact) {
-    m_factory = fact;
+  TestState() : State() {
     m_renderer = new Renderer();
     m_scene = new Scene();
     m_ctrlMan = new ControllerManager(new TestStateController());
@@ -90,9 +83,8 @@ void specialKeyUpCB(int key, int x, int y) {
 }
 
 int main() {
-  TestFactory* fact = new TestFactory();
-  g_game = new StateManager(fact);
-  g_game->push(new TestState(fact));
+  g_game = new StateManager();
+  g_game->push(new TestState());
   
   char* argv[1];
   int argc = 1;

@@ -7,11 +7,13 @@
 
 //#include <vector>
 
+class Entity;
+
 class ObjectFactory {
 public:
   Object* getNewObject();
   Entity* getNewEntity(eEntities type);
-  Entity* getNewTextEntity(std::string text, int size);
+  //TextEntity* getNewTextEntity(std::string text, int size);
   void resetIDCounter();
 protected:
   //std::vector<Object*> m_objects;

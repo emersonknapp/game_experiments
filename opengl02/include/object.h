@@ -4,8 +4,11 @@ typedef unsigned int ObjectID;
 
 class Object {
 public:
-  void setOID(ObjectID oid) { m_oid = oid; }
-  ObjectID getOID() {return m_oid;}
+  Object();
+  void setOID(ObjectID oid);
+  ObjectID getOID();
 protected:
   ObjectID m_oid;
+private:
+  static ObjectID s_nextID;
 };

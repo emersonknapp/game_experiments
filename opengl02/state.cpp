@@ -5,12 +5,11 @@ using namespace std;
 //************
 // STATE    
 //************
-State::State(ObjectFactory* fact) {
+State::State() {
   m_running = true;
   m_scene = NULL;
   m_ctrlMan = NULL;
   m_renderer = NULL;
-  m_factory = fact;
 }
 
 State::~State() {

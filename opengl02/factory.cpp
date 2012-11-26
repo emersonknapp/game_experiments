@@ -9,6 +9,8 @@ void ObjectFactory::assignOID(Object* o) {
   o->setOID(oid);
 }
 
+
+//Ignore this function. Exists for testing needs
 Object* ObjectFactory::getNewObject() {
   Object* ret = new Object();
   assignOID(ret);
@@ -25,6 +27,7 @@ State* ObjectFactory::getNewState() {
 }
 */
 
+//Implement me!
 Entity* ObjectFactory::getNewEntity(eEntities type) {
   Entity* ret = new Entity();
   assignOID(ret);

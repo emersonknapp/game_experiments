@@ -14,7 +14,7 @@ public:
   Entity();
   virtual ~Entity();
   virtual eEntityUpdate update(int mils);
-  
+    
   virtual void setRenderable(Renderable* r);
   virtual Renderable* getRenderable();
   virtual bool isRenderable();
@@ -39,6 +39,7 @@ protected:
   PhysInfo* m_physInfo;
   Renderable* m_renderable;
   CollideInfo* m_collideInfo;
+
 };
 
 class TextEntity : public Entity {
