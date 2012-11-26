@@ -3,6 +3,19 @@
 ControllerManager::ControllerManager(StateController* sc) {
   m_stateController = sc;
 }
+
+ControllerManager::~ControllerManager() {
+  delete m_stateController;
+  std::map<ObjectID, InputController*>::iterator it;
+  for (it = m_inputControllers.begin(); it != m_inputControllers.end(); it++) {
+    delete it->second;
+  }
+  std::map<ObjectID, Controller*>::iterator it2;
+  for (it2 = m_controllers.begin(); it2 != m_controllers.end(); it2++) {
+    delete it2->second;
+  }
+}
+
 void ControllerManager::addController(ObjectID controlled, Controller* controller) {
   m_controllers[controlled] = controller;
 }

@@ -1,5 +1,11 @@
 #include "scene.h"
 
+Scene::~Scene() {
+  std::set<Entity*>::iterator it;
+  for (it = m_entities.begin(); it != m_entities.end(); it++) {
+    delete (*it);
+  }
+}
 void Scene::addEntity(Entity* ent) {
   m_entities.insert(ent);
 }

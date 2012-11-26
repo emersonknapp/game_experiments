@@ -8,6 +8,7 @@
 class Scene {
 public:
   //Scene();
+  virtual ~Scene();
   virtual void addEntity(Entity* ent);
   virtual void removeEntity(Entity* ent);
   virtual std::set<Entity*> getEntities();

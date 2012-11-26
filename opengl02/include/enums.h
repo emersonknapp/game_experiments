@@ -19,3 +19,11 @@ enum eEntityUpdate {
   ENT_DEAD,
   ENT_SPAWN
 };
+
+enum eStates {
+  ST_TEST
+};
+
+enum eEntities {
+  ENT_TEXT
+};

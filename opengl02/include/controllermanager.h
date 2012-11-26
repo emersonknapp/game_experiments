@@ -7,6 +7,7 @@
 class ControllerManager {
 public:
   ControllerManager(StateController* sc);
+  virtual ~ControllerManager();
   
   virtual void addController(ObjectID controlled, Controller* controller);
   virtual void addController(ObjectID controlled, InputController* controller);

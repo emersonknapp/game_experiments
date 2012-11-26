@@ -12,6 +12,7 @@ using namespace std;
 class Entity : public Object {
 public:
   Entity();
+  virtual ~Entity();
   virtual eEntityUpdate update(int mils);
   
   virtual void setRenderable(Renderable* r);

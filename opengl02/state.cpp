@@ -5,8 +5,18 @@ using namespace std;
 //************
 // STATE    
 //************
-State::State() {
+State::State(ObjectFactory* fact) {
   m_running = true;
+  m_scene = NULL;
+  m_ctrlMan = NULL;
+  m_renderer = NULL;
+  m_factory = fact;
+}
+
+State::~State() {
+  if (m_scene != NULL) delete m_scene;
+  if (m_ctrlMan != NULL) delete m_ctrlMan;
+  if (m_renderer != NULL) delete m_renderer;
 }
 
 bool State::running() {

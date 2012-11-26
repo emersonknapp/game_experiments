@@ -1,6 +1,7 @@
 #pragma once
 
 #include "state.h"
+#include "factory.h"
 
 #ifdef _WIN32
 #	include <windows.h>
@@ -15,7 +16,7 @@ static struct timeval lastTime;
 
 class StateManager {
 public:
-  StateManager();
+  StateManager(ObjectFactory* fact);
   virtual ~StateManager();
    
    //StateActions
@@ -44,4 +45,5 @@ public:
   
 protected:
   std::vector<State*> m_states;
+  ObjectFactory* m_factory;
 };

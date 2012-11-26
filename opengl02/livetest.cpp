@@ -8,6 +8,10 @@
 
 StateManager* g_game;
 
+class TestFactory : public ObjectFactory {
+public:  
+};
+
 class TestStateController : public StateController {
 public:
   eStateUpdate stateUpdate(Scene* scene, int mils) {
@@ -34,9 +38,11 @@ public:
 };
 
 class TestState : public State {
+protected:
+  TestFactory* m_factory;
 public:
-  TestState() {
-    State::State();
+  TestState(TestFactory* fact) : State(fact) {
+    m_factory = fact;
     m_renderer = new Renderer();
     m_scene = new Scene();
     m_ctrlMan = new ControllerManager(new TestStateController());
@@ -47,7 +53,7 @@ public:
   eStateUpdate update(int mils) {
     eStateUpdate ret = m_ctrlMan->stateUpdate(m_scene, mils);
     m_ctrlMan->entityUpdate(m_scene, mils);
-    //TODO:TEST: actual update
+    //TODO: move, collide
     return ret;
   }
   
@@ -84,8 +90,9 @@ void specialKeyUpCB(int key, int x, int y) {
 }
 
 int main() {
-  g_game = new StateManager();
-  g_game->push(new TestState());
+  TestFactory* fact = new TestFactory();
+  g_game = new StateManager(fact);
+  g_game->push(new TestState(fact));
   
   char* argv[1];
   int argc = 1;

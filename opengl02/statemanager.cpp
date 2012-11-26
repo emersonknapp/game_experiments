@@ -1,7 +1,7 @@
 #include "statemanager.h"
 
-StateManager::StateManager(){
-  
+StateManager::StateManager(ObjectFactory* fact){
+  m_factory = fact;
 }
 
 StateManager::~StateManager() {
@@ -42,6 +42,7 @@ bool StateManager::update(int mils) {
       pop();
       break;
     case ST_PUSH: //TODO
+      
     case ST_SWAP: //TODO
     default:
       break;

@@ -16,14 +16,16 @@ Object* ObjectFactory::getNewObject() {
   return ret;
 }
 
+/*
 State* ObjectFactory::getNewState() {
   State* ret = new State();
   assignOID(ret);
   //m_objects.push_back(ret);
   return ret;
 }
+*/
 
-Entity* ObjectFactory::getNewEntity() {
+Entity* ObjectFactory::getNewEntity(eEntities type) {
   Entity* ret = new Entity();
   assignOID(ret);
   return ret;

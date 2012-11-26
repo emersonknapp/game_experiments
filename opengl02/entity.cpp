@@ -7,6 +7,13 @@ Entity::Entity() {
   m_transform = new Transform2f();
 }
 
+Entity::~Entity() {
+  if (m_renderable != NULL) delete m_renderable;
+  if (m_physInfo != NULL) delete m_physInfo;
+  if (m_collideInfo != NULL) delete m_collideInfo;
+  if (m_transform != NULL) delete m_transform;
+}
+
 eEntityUpdate Entity::update(int mils) {
   return ENT_OK;
 }

@@ -6,6 +6,7 @@
 #include "scene.h"
 #include "controllermanager.h"
 #include "renderer.h"
+#include "factory.h"
 
 #define STATE_DEBUG true
 
@@ -21,8 +22,8 @@ using namespace std;
 
 class State : public Object {
 public:
-  State();
-  //virtual ~State(); //TODO
+  State(ObjectFactory* fact);
+  virtual ~State();
   virtual eStateUpdate update(int mils);
   virtual bool running(); //return false when state is finished, true otherwise
   virtual void kill(); //make this state end immediately on next update
@@ -34,6 +35,7 @@ public:
 protected:
   bool m_running;
   Scene* m_scene;
+  ObjectFactory* m_factory;
   ControllerManager* m_ctrlMan;
   Renderer* m_renderer;
   // Physics* m_physics;
