@@ -1,8 +1,10 @@
 #pragma once
 
 #include "object.h"
+#include "entity.h"
 #include "state.h"
-#include <vector>
+
+//#include <vector>
 
 class ObjectFactory {
 public:
@@ -11,7 +13,7 @@ public:
   Entity* getNewEntity();
   void resetIDCounter();
 protected:
-  std::vector<Object*> m_objects;
+  //std::vector<Object*> m_objects;
 private:
   void assignOID(Object* o);
   ObjectID nextID();

@@ -19,6 +19,24 @@ void State::kill() {
 
 eStateUpdate State::update(int mils) {
   return ST_OK;
+  //TODO: ctrl, move, collide
+  //in that order.
+  //should i delegate that to subclass? probably not necessary
+}
+
+void State::key(bool special, bool keyDown, int k, double x, double y) {
+  if (m_ctrlMan != NULL) {
+    m_ctrlMan->key(special, keyDown, k, x, y);
+  }
+}
+
+void State::draw() {
+  if (m_renderer != NULL)
+    m_renderer->render(m_scene);
+}
+
+Renderer* State::getRenderer() {
+  return m_renderer;
 }
 
 

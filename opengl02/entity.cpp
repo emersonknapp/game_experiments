@@ -8,7 +8,7 @@ Entity::Entity() {
 }
 
 eEntityUpdate Entity::update(int mils) {
-  return OK;
+  return ENT_OK;
 }
 
 void Entity::setRenderable(Renderable* r) {
@@ -53,11 +53,18 @@ Transform2f* Entity::getTransform() {
 }
 
 void Entity::translate(Vector2f v) {
-  //TODO
+  m_transform->translate(v);
 }
 void Entity::rotate(Vector2f v) {
-  //TODO
+  m_transform->rotate(v);
 }
 void Entity::scale(Vector2f v) {
-  //TODO
+  m_transform->scale(v);
+}
+
+TextEntity::TextEntity(string text, int size) {
+  Entity::Entity();
+  m_renderable = new RendText(text, size);
+  m_text = text;
+  m_size = size;
 }

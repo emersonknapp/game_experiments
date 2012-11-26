@@ -3,7 +3,7 @@
 Renderer::Renderer() {
   m_font = new FTGLPixmapFont("./data/trebuchet.ttf");
   if (m_font->Error()) 
-    Error("Font broken.");
+    if (RENDER_DEBUG) cout << "Font Broken" << endl;
   m_font->FaceSize(72);
 }
 
@@ -13,26 +13,32 @@ Renderer::~Renderer() {
 
 void Renderer::render(Scene* scene) {
   //if (RENDER_DEBUG) cout << "Rendering" << endl;
+  
+  glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+  
   vector<Entity*> rendies = scene->getRenderableEntities();
   vector<Entity*>::iterator it;
   
   for (it = rendies.begin(); it != rendies.end(); it++) {
     Renderable* rbl = (*it)->getRenderable();
-    REND_TYPE rt = rbl->type();
-    Transform2f off = (*it)->getTransform();
+    eRendType rt = rbl->getType();
+    Transform2f* off = (*it)->getTransform();
     
-    glRasterPos2f(off.getTranslation()(0), off.getTranslation()(1));
+    glRasterPos2f(off->getTranslation()(0), off->getTranslation()(1));
+    //TODO: rotation and scale
     switch (rt) {
       case REND_TEXT:
       {
-        m_font->FaceSize(((R_Text*)(rbl))->m_size);
-        m_font->Render(((R_Text*)(rbl))->m_text.c_str());
+        m_font->FaceSize(((RendText*)(rbl))->m_size);
+        m_font->Render(((RendText*)(rbl))->m_text.c_str());
         break;
       }
       break;
       default:
-      Warning("Unrenderable object received.");
+      if (RENDER_DEBUG) cout << "Unrenderable object received" << endl;
     }
   }
 
+  glFlush();
+  glutSwapBuffers();
 }

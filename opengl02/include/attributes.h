@@ -2,6 +2,7 @@
 
 #include <Eigen/Core>
 #include <string>
+#include "enums.h"
 
 using namespace Eigen;
 using namespace std;
@@ -18,7 +19,6 @@ struct PhysInfo {
 //////////////////////////
 /// RENDERABLE
 /////////////////////////
-enum eRendType {REND_TEXT, REND_QUAD, REND_BMP}; //TODO: expand
 
 class Renderable {
 public:
@@ -49,7 +49,7 @@ struct CollideInfo {
 
 class Transform2f {
 public:
-  Transform2f() : translation(Vector2f(0,0)), rotation(Vector2f(0,0)), scale(Vector2f(0,0)) {}
+  Transform2f();
   
   Vector2f getTranslation();
   void translate(Vector2f t);

@@ -4,15 +4,10 @@
 #include <string>
 #include "object.h"
 #include "attributes.h"
+#include "enums.h"
 
 using namespace Eigen;
 using namespace std;
-
-enum eEntityUpdate {
-  OK,
-  DEAD,
-  SPAWN
-};
 
 class Entity : public Object {
 public:
@@ -48,6 +43,9 @@ protected:
 class TextEntity : public Entity {
 public:
   TextEntity(string text, int size);
+protected:
+  string m_text;
+  int m_size;
 };
 
 

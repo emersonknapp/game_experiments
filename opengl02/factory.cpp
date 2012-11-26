@@ -29,6 +29,7 @@ Entity* ObjectFactory::getNewEntity() {
   return ret;
 }
 
+
 ObjectID ObjectFactory::s_nextID = 0;
 
 void ObjectFactory::resetIDCounter() {
