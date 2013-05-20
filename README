@@ -7,5 +7,3 @@ Snack currently contains
 Opengl01 contains the beginning of an aborted attempt at a Space Invaders clone.
 
 Opengl02 contains a bit of a mess.
-take3.tmproj denotes the skeleton of ENGE: 'Nother Game Engine
-make3 is the file to make it, into executable 'test'
