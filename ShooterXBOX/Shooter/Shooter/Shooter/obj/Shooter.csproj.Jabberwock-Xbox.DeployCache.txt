@@ -1,0 +1,47 @@
+fcd9576f01ce4b9593147a5e1c503d70
+0
+Jabberwock-Xbox
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\
+130129806160000000
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\GameThumbnail.png
+2013-05-14T02:25:50.1928395Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Shooter.exe
+2013-05-18T23:28:13.3698473Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\bgLayer1.xnb
+2013-05-14T15:00:27.0985630Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\bgLayer2.xnb
+2013-05-14T15:00:28.8886654Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\endMenu.xnb
+2013-05-14T15:00:30.6727675Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\explosion.xnb
+2013-05-14T15:00:31.3938087Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\font1.xnb
+2013-05-14T15:00:43.0754769Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\gameFont.xnb
+2013-05-14T15:00:42.9944722Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\laser.xnb
+2013-05-14T15:00:31.4708131Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\mainbackground.xnb
+2013-05-14T15:00:33.5919344Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\mainMenu.xnb
+2013-05-14T15:00:35.0930203Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\mine.xnb
+2013-05-14T15:00:35.1850256Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\mineAnimation.xnb
+2013-05-14T15:00:35.3760365Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\player.xnb
+2013-05-14T15:00:35.4810425Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\shipAnimation.xnb
+2013-05-14T15:00:35.8120614Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\Sound\explosion.xnb
+2013-05-14T15:00:35.9650702Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\Sound\gameMusic.wma
+2013-05-14T15:00:40.4383260Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\Sound\gameMusic.xnb
+2013-05-14T15:00:40.5003296Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\Sound\laserFire.xnb
+2013-05-14T15:00:35.9930718Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\Sound\menuMusic.wma
+2013-05-14T15:00:42.7624590Z
+C:\Dev\Game\ShooterXBOX\Shooter\Shooter\Shooter\bin\Xbox 360\Debug\Content\Sound\menuMusic.xnb
+2013-05-14T15:00:42.8224624Z
