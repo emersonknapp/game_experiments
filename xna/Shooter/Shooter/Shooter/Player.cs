@@ -1,42 +1,25 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-
 using Microsoft.Xna.Framework.Graphics;
 
 
 namespace Shooter
 {
-	class Player
+	class Player : AnimatedSprite
 	{
-        public Texture2D texture;
-        public Vector2 pos;
-        public Animation anim;
-        public bool active;
         public int health;
-        public int width 
-        {
-            get { return anim.FrameWidth; }
-        }
-        public int height
-        {
-            get { return anim.FrameHeight;  }
-        }
+        public float speed;
 
-        public void Initialize(Animation animation, Vector2 aposition)
+        public override void Initialize(Animation animation, Vector2 position)
         {
-            anim = animation;
-            pos = aposition;
-            active = true;
+            speed = 8.0f;
             health = 100;
+            base.Initialize(animation, position);
         }
-        public void Update(GameTime cgameTime)
+        public override void Update(GameTime cgameTime)
         {
-            anim.Position = pos;
-            anim.Update(cgameTime);
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            this.anim.Draw(spriteBatch);
+            animation.Position = pos;
+            animation.Update(cgameTime);
         }
 	}
 }

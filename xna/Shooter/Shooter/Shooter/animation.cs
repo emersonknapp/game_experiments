@@ -45,16 +45,19 @@ namespace Shooter
         public void Update(GameTime gameTime)
         {
             if (!Active) return;
+
             elapsedTime += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
             if (elapsedTime > frameTime)
             {
                 currentFrame++;
-                //if (currentFrame >= frameCount) currentFrame = 0;
+                if (currentFrame >= frameCount && !Looping)
+                {
+                    Active = false;
+                    return;
+                }
                 currentFrame %= frameCount;
-                //this.Active = (Looping == true);
                 elapsedTime -= frameTime;
-                
             }
 
             sourceRect = new Rectangle(currentFrame * FrameWidth, 0, FrameWidth, FrameHeight);
