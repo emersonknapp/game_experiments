@@ -62,6 +62,6 @@ int setup_opengl(int width, int height) {
  
 int main(int argc, char **argv) {
   if (InitVideo() == false) return 1;
-  SDL_Delay(10000);
+  SDL_Delay(1000);
   return 0;
 }
