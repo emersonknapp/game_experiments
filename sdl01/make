@@ -1,0 +1,2 @@
+gcc -Wall `sdl-config --cflags` -I/opt/X11/include -c -o main.o main.cpp
+gcc `sdl-config --libs` -L/opt/X11/lib -lSDL -lGL -lGLU -o main main.o
