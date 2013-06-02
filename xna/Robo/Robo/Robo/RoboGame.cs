@@ -66,7 +66,7 @@ namespace Robo
       {
          // Create a new SpriteBatch, which can be used to draw textures.
          spriteBatch = new SpriteBatch(GraphicsDevice);
-         map = Content.Load<Map>("sewer1");
+         map = Content.Load<Map>("planetcute");
          Animation playerAnim = new Animation();
          Texture2D playerTex = Content.Load<Texture2D>("mineAnimation");
          playerAnim.Initialize(playerTex, Vector2.Zero, 47, 61, 8, 30, Color.White, 1f, true);
@@ -96,10 +96,6 @@ namespace Robo
              || keys.IsKeyDown(Keys.Escape))
             this.Exit();
 
-         foreach (var v in map.TileLayers)
-         {
-            Console.WriteLine(v.Properties["layer"].Value);
-         }
          
          if (keys.IsKeyDown(Keys.Down))
             player.pos.Y += Convert.ToInt32(gameTime.ElapsedGameTime.TotalMilliseconds / 4);

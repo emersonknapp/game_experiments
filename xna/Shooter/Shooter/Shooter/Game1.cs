@@ -325,6 +325,8 @@ namespace Shooter
 
             DrawText(spriteBatch, "Score: " + score, new Vector2(0,0), Color.White);
             DrawText(spriteBatch, "Health: " + player.health, new Vector2(0, 30), Color.White);
+            Vector2 leftThumbStick = GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;
+            DrawText(spriteBatch, "ThumbStickLeft: (" + leftThumbStick.X + "," + leftThumbStick.Y + ")", new Vector2(0, 60), Color.White);
 
             //End Drawing code
             spriteBatch.End();

@@ -14,3 +14,5 @@ C:\Dev\gamex\xna\Robo\Robo\Robo\bin\x86\Debug\Content\sewers.xnb
 C:\Dev\gamex\xna\Robo\Robo\Robo\bin\x86\Debug\Content\sewers\00.xnb
 C:\Dev\gamex\xna\Robo\Robo\Robo\bin\x86\Debug\Content\mineAnimation.xnb
 C:\Dev\gamex\xna\Robo\Robo\Robo\bin\x86\Debug\Content\mine.xnb
+C:\Dev\gamex\xna\Robo\Robo\Robo\bin\x86\Debug\Content\planetcute.xnb
+C:\Dev\gamex\xna\Robo\Robo\Robo\bin\x86\Debug\Content\planetcute\00.xnb

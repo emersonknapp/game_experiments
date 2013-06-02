@@ -100,6 +100,33 @@
       <Output>C:\Dev\gamex\xna\Robo\Robo\Robo\bin\x86\Debug\Content\mine.xnb</Output>
       <Time>2013-05-27T20:33:03.7265753-06:00</Time>
     </Item>
+    <Item>
+      <Source>planetcute.tmx</Source>
+      <Name>planetcute</Name>
+      <Importer>TMXContentImporter</Importer>
+      <Processor>TMXContentProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Dev\gamex\xna\Robo\Robo\Robo\bin\x86\Debug\Content\planetcute.xnb</Output>
+      <Time>2013-06-01T22:49:07.4008447-06:00</Time>
+      <Request>C:\Dev\gamex\xna\Robo\Robo\Robo\bin\x86\Debug\Content\planetcute\00.xnb</Request>
+    </Item>
+    <Item>
+      <Source>C:\Dev\gamex\commondata\PlanetCute\Blocks\montage.png</Source>
+      <Name>planetcute\00</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="GenerateMipmaps" Type="bool">false</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">Color</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">false</Data>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Dev\gamex\xna\Robo\Robo\Robo\bin\x86\Debug\Content\planetcute\00.xnb</Output>
+      <Time>2013-06-01T22:41:12.64069-06:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
