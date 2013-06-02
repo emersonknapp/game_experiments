@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robo", "Robo\Robo\Robo.csproj", "{C55EF123-65C4-4505-BDA1-0A442DF20602}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "RoboContent", "Robo\RoboContent\RoboContent.contentproj", "{E6EC8C7D-CCA9-453A-A2E7-178D5E04CDEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C55EF123-65C4-4505-BDA1-0A442DF20602}.Debug|x86.ActiveCfg = Debug|x86
+		{C55EF123-65C4-4505-BDA1-0A442DF20602}.Debug|x86.Build.0 = Debug|x86
+		{C55EF123-65C4-4505-BDA1-0A442DF20602}.Release|x86.ActiveCfg = Release|x86
+		{C55EF123-65C4-4505-BDA1-0A442DF20602}.Release|x86.Build.0 = Release|x86
+		{E6EC8C7D-CCA9-453A-A2E7-178D5E04CDEB}.Debug|x86.ActiveCfg = Debug|x86
+		{E6EC8C7D-CCA9-453A-A2E7-178D5E04CDEB}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

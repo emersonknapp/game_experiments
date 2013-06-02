@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="Sewer1" tilewidth="16" tileheight="16">
+  <image source="../../../../commondata/sewer_1.png" width="256" height="352"/>
+ </tileset>
+ <layer name="Ground" width="100" height="100">
+  <properties>
+   <property name="layer" value="Ground"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztnGlOwzAQRl2WA7BI/Q3lAghugJT7H4lEbaRi4sR2xh57+p40ooraJP5exlkKHJ1zRwNlhXk8n4kVyuVro/Cxzjyen8QK5ZL7OXycmcdzGOsusu5dOJe19ax9Dh9n5vE8jfUcWS8uPB+9jfUx1vtYj2M9XF5Py04OH1vk+libk74vPyc3J2+ZVR/DpfaS4+PVrc9n03uu56bDwrLcGgLLtRicnIuJHB+xPeSv+3qZtf6Y2eslx8d8Tlir08K6LfuQ6pPc80dKVrfiQwJ8yGUpAT7aooaP6brXP6fgYxk/s5haytUtLKtZVpDMw88GH+mUysN6f5S6BpDOo0b2g1f4yD8+b7E/Ut5bsz+kt7nXx5576tb74xi5PultSvVHqpdefITWWWqbUj5aoVY2JbaDj3bLCrVzC32f1JIPzeeL+PgPPsr6SM33lnyUKh/p77VroZ1jbE9t9ZUVtLOO9RHznlqU7DvtrKVqotW5SeP5lXZdj701L9I+lp5vt1Z7MihJ6n5o51jSh7aTnH0olU/tPgrloUnO9rWP65I+ekQ7R6lesoK2B6lrBCtoH9dSVZKa5yGpYxwfMkhk0cK9iRWkc9HyYgXteUayNy2gnaeUDyto5ylVVtDOER9/0c7Rig/pvx/svbSR/n8ALdzT9exDCnyUY+/z9p6dpFLrOtnStXhprN27AAAAaBF7PvV/B8zac11tJLNcc4WzOKxl1PN4et73EL2Oqdf9tgo+9kOGbYEPsA7X4W2Bi3bARTxkBaXhGGuHnl30vO8heh5Tz/sOAAAAAAAAAAAAAAAAAAAAAAAAAAAA0Du/7yYB0g==
+  </data>
+ </layer>
+ <layer name="Roof" width="100" height="100">
+  <properties>
+   <property name="layer" value="Roof"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1VtKwwAYhNG8e1tAqy5A3f/2TJ9kmhjTYJhQzoH/pZBA54P2PAzD83ifN97LeOerW/Oeuef+4+7F5bu8bnjuNEw3WfOeuef0+KHHsWzt8TFMf4u+Vjynx7KtPbbSY9mePR7Ge7r6TI9le/Y4zbxbj2V6HMvWHpffosc/7n3m3Xos29pj7a563EaPY9HjWPbu8TZM/1P0+N3cZmtur131uI+7F+0d9UjtHfVI7R31SO0d9UjtHfVI7R31SO0d9UjtHfVI7R31SO0d9UjtHfVI7R31SO0d9UjtHfVI7R31SO0d9UjtHfVI7R31SO0d9UjtHfVI7R31SO0d9UjtHfVI7R31SO0d9UjtHfVI7R31SO0d9UjtHfVI7R31SO0d9UjtHfVI7R31SO0d9UjtHfUAAAAAAAAAAAAAAAAAAAAAAAAA4Ii+AS2h+CA=
+  </data>
+ </layer>
+ <layer name="Effects" width="100" height="100">
+  <properties>
+   <property name="layer" value="Effects"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1lsKwjAQBdCsSF2Aynz4+BP3vxoRjWAtIaMtCD0HQqG5TEOmpSmFf7R5Xo+NTJ1bddY8fb+cxYtEdj/XIniJRLbVj2tj7pJ4xtJFIjvsx3nCdfAQiaz3fH4xYa1Def+GYuQebZHM389Y68bYjtTWj36RyPaed4e19aNfJLLZfa219aNfJLL6Mb9IZLP7uiuf/xTa6p71DPsKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/OIG/tIOag==
+  </data>
+ </layer>
+ <objectgroup color="#126ac8" name="Collision" width="100" height="100" visible="0">
+  <object x="224" y="80" width="112" height="16"/>
+  <object x="16" y="48" width="16" height="176"/>
+  <object x="32" y="216" width="192" height="16"/>
+  <object x="32" y="32" width="192" height="16"/>
+  <object x="224" y="48" width="16" height="32"/>
+  <object x="224" y="136" width="16" height="96"/>
+  <object x="240" y="136" width="128" height="16"/>
+  <object x="368" y="80" width="32" height="128"/>
+  <object x="400" y="200" width="48" height="16"/>
+  <object x="448" y="16" width="16" height="192"/>
+  <object x="304" y="16" width="16" height="64"/>
+  <object x="320" y="32" width="128" height="16"/>
+  <object x="352" y="80" width="16" height="16"/>
+  <object x="400" y="80" width="16" height="16"/>
+  <object x="432" y="80" width="16" height="16"/>
+ </objectgroup>
+</map>
