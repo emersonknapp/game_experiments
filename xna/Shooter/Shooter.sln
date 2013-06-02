@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShooterContent", "Shooter\ShooterContent\ShooterContent.contentproj", "{301A0986-067D-486C-9FDE-689861944A3A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shooter_Xbox", "Shooter\Shooter\Shooter_Xbox.csproj", "{380BC407-8168-4DEF-B48A-1AA2E7484F7A}"
@@ -44,11 +44,13 @@ Global
 		{4C5A3B73-5982-4B76-8508-F8095EADEE61}.Debug|x86.ActiveCfg = Debug|x86
 		{4C5A3B73-5982-4B76-8508-F8095EADEE61}.Debug|x86.Build.0 = Debug|x86
 		{4C5A3B73-5982-4B76-8508-F8095EADEE61}.Debug|Xbox 360.ActiveCfg = Debug|x86
+		{4C5A3B73-5982-4B76-8508-F8095EADEE61}.Debug|Xbox 360.Build.0 = Debug|x86
 		{4C5A3B73-5982-4B76-8508-F8095EADEE61}.Release|Mixed Platforms.ActiveCfg = Release|x86
 		{4C5A3B73-5982-4B76-8508-F8095EADEE61}.Release|Mixed Platforms.Build.0 = Release|x86
 		{4C5A3B73-5982-4B76-8508-F8095EADEE61}.Release|x86.ActiveCfg = Release|x86
 		{4C5A3B73-5982-4B76-8508-F8095EADEE61}.Release|x86.Build.0 = Release|x86
 		{4C5A3B73-5982-4B76-8508-F8095EADEE61}.Release|Xbox 360.ActiveCfg = Release|x86
+		{4C5A3B73-5982-4B76-8508-F8095EADEE61}.Release|Xbox 360.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
