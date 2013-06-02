@@ -1,0 +1,109 @@
+e43a8e485f7f4c989c2e57d13f38c7c1
+0
+Jabberwock-Xbox
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\
+130140750160000000
+Default Thumbnail
+2013-05-26T20:50:09.9390295Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Platformer.exe
+2013-05-26T20:49:07.3144475Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Backgrounds\Layer0_0.xnb
+2013-05-26T20:48:57.8359054Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Backgrounds\Layer0_1.xnb
+2013-05-26T20:48:58.6439516Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Backgrounds\Layer0_2.xnb
+2013-05-26T20:48:59.4930002Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Backgrounds\Layer1_0.xnb
+2013-05-26T20:49:00.0450318Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Backgrounds\Layer1_1.xnb
+2013-05-26T20:49:00.5830625Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Backgrounds\Layer1_2.xnb
+2013-05-26T20:49:01.1510950Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Backgrounds\Layer2_0.xnb
+2013-05-26T20:49:01.6051210Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Backgrounds\Layer2_1.xnb
+2013-05-26T20:49:02.0811482Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Backgrounds\Layer2_2.xnb
+2013-05-26T20:49:02.5751765Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Fonts\Hud.xnb
+2013-05-26T20:49:03.3282195Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Levels\0.txt
+2010-09-27T16:53:10.0000000Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Levels\1.txt
+2010-09-27T16:53:10.0000000Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Levels\2.txt
+2010-09-27T16:53:10.0000000Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Overlays\you_died.xnb
+2013-05-26T20:49:02.7491864Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Overlays\you_lose.xnb
+2013-05-26T20:49:02.9171960Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Overlays\you_win.xnb
+2013-05-26T20:49:03.0862057Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sounds\ExitReached.xnb
+2013-05-26T20:49:03.5162303Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sounds\GemCollected.xnb
+2013-05-26T20:49:03.5832341Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sounds\MonsterKilled.xnb
+2013-05-26T20:49:03.6992408Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sounds\Music.wma
+2013-05-26T20:49:06.4713993Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sounds\Music.xnb
+2013-05-26T20:49:06.5014010Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sounds\PlayerFall.xnb
+2013-05-26T20:49:06.6054070Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sounds\PlayerJump.xnb
+2013-05-26T20:49:06.6604101Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sounds\PlayerKilled.xnb
+2013-05-26T20:49:06.7374145Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sounds\Powerup.xnb
+2013-05-26T20:49:07.0854344Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\Gem.xnb
+2013-05-26T20:48:55.2257561Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\MonsterA\Idle.xnb
+2013-05-26T20:48:55.3427628Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\MonsterA\Run.xnb
+2013-05-26T20:48:55.4497689Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\MonsterB\Idle.xnb
+2013-05-26T20:48:55.5727760Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\MonsterB\Run.xnb
+2013-05-26T20:48:55.6817822Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\MonsterC\Idle.xnb
+2013-05-26T20:48:55.8097895Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\MonsterC\Run.xnb
+2013-05-26T20:48:55.9187957Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\MonsterD\Idle.xnb
+2013-05-26T20:48:56.0408027Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\MonsterD\Run.xnb
+2013-05-26T20:48:56.1518091Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\Player\Celebrate.xnb
+2013-05-26T20:48:56.2758162Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\Player\Die.xnb
+2013-05-26T20:48:56.3808222Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\Player\Idle.xnb
+2013-05-26T20:48:56.4188243Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\Player\Jump.xnb
+2013-05-26T20:48:56.5318308Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Sprites\Player\Run.xnb
+2013-05-26T20:48:56.6398370Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Tiles\BlockA0.xnb
+2013-05-26T20:48:56.6738389Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Tiles\BlockA1.xnb
+2013-05-26T20:48:56.7058408Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Tiles\BlockA2.xnb
+2013-05-26T20:48:56.7388426Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Tiles\BlockA3.xnb
+2013-05-26T20:48:56.7708445Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Tiles\BlockA4.xnb
+2013-05-26T20:48:56.8088467Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Tiles\BlockA5.xnb
+2013-05-26T20:48:56.8498490Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Tiles\BlockA6.xnb
+2013-05-26T20:48:56.9028520Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Tiles\BlockB0.xnb
+2013-05-26T20:48:56.9358539Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Tiles\BlockB1.xnb
+2013-05-26T20:48:56.9678557Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Tiles\Exit.xnb
+2013-05-26T20:49:03.1212077Z
+c:\Dev\gamex\xna\Platformer_Sample\Platformer\Platformer\bin\Xbox 360\Debug\Content\Tiles\Platform.xnb
+2013-05-26T20:48:57.0008576Z
