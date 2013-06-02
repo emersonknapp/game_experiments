@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="101" tileheight="40">
+ <tileset firstgid="1" name="Blocks" tilewidth="101" tileheight="171" spacing="2" margin="1">
+  <image source="../../../../commondata/PlanetCute/Blocks/montage.png" width="309" height="692"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2LENACAMA8HQsP/IiB6nRYI7ySN84yoAAHjfbAa/2x2Mw/QB+oCOPiDTB2T6gEwfkPl3AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuGEBNTYAuw==
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2LENADAMw7BM/f/kXqBsnUoCPkGLZwAAeOEsg99VB/oAfcBGH9D0AU0f0PQBzb8LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXGstAJ0=
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T+1lC6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAbnEAAAQ==
+  </data>
+ </layer>
+ <objectgroup color="#1fa410" name="Object Layer 1" width="100" height="100">
+  <object x="202" y="200" width="707" height="80"/>
+  <object x="202" y="280" width="101" height="480"/>
+  <object x="808" y="280" width="101" height="480"/>
+  <object x="202" y="760" width="707" height="80"/>
+ </objectgroup>
+</map>
