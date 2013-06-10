@@ -10,7 +10,9 @@ namespace Robo
       protected float _zoom;
       protected Matrix _transform;
       protected Vector2 _pos;
-      protected float _rotation;
+
+      protected bool fixedX;
+      protected bool fixedY;
 
       protected bool isFollowingSprite;
       protected Sprite sprite;
@@ -18,7 +20,6 @@ namespace Robo
       public Camera2D()
       {
          _zoom = 1f;
-         _rotation = 0f;
          _pos = Vector2.Zero;
          isFollowingSprite = false;
       }
@@ -34,11 +35,6 @@ namespace Robo
          set {_zoom = value; if (_zoom <0.1f) _zoom = 0.1f; }
       }
 
-      public float rotation
-      {
-         get { return _rotation; }
-         set { _rotation = value; }
-      }
       public void Move(Vector2 amount)
       {
          _pos += amount;
@@ -49,15 +45,39 @@ namespace Robo
          set { _pos = value; }
       }
 
+      public void fixX(float x)
+      {
+         fixedX = true;
+         _pos.X = x;
+      }
+      public void fixY(float y)
+      {
+         fixedY = true;
+         _pos.Y = y;
+      }
+      public void freeX()
+      {
+         fixedX = false;
+      }
+      public void freeY()
+      {
+         fixedY = false;
+      }
+
       public Matrix get_transformation(GraphicsDevice graphicsDevice)
       {
          Viewport vp = graphicsDevice.Viewport;
          _transform =     
                Matrix.CreateTranslation(new Vector3(-_pos.X, -_pos.Y, 0)) *
-               Matrix.CreateRotationZ(rotation) *
                Matrix.CreateScale(new Vector3(zoom, zoom, 1)) *
                Matrix.CreateTranslation(new Vector3(vp.Width * 0.5f, vp.Height * 0.5f, 0));
          return _transform;
+      }
+
+      public Vector2 getTopLeft(Viewport vp)
+      {
+         return new Vector2(pos.X - vp.Width / 2, pos.Y - vp.Height / 2);
+
       }
 
       public void Update(GameTime gt, GraphicsDevice graphicsDevice, Map m)
@@ -69,12 +89,17 @@ namespace Robo
          float maxX = m.Bounds.X+m.Bounds.Width-(vp.Width*0.5f);
          float maxY = m.Bounds.Y+m.Bounds.Height-(vp.Height*0.5f);
 
-         Vector2 newPos = pos;
-         newPos.X = MathHelper.Clamp(sprite.pos.X, minX, maxX);
-         newPos.Y = MathHelper.Clamp(sprite.pos.Y, minY, maxY);
+         //Following the sprite
+         if (isFollowingSprite)
+         {
+            Vector2 newPos = pos;
+            if (!fixedX)
+               newPos.X = MathHelper.Clamp(sprite.pos.X, minX, maxX);
+            if (!fixedY)
+               newPos.Y = MathHelper.Clamp(sprite.pos.Y, minY, maxY);
 
-         pos = newPos;
-
+            pos = newPos;
+         }
       }
    }
 }

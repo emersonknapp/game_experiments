@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="101" tileheight="40">
- <tileset firstgid="1" source="../../../../commondata/PlanetCute/Blocks.tsx"/>
- <tileset firstgid="13" source="../../../../commondata/PlanetCute/Architecture.tsx"/>
- <tileset firstgid="29" source="../../../../commondata/PlanetCute/Doodads.tsx"/>
- <tileset firstgid="45" source="../../../../commondata/PlanetCute/Characters.tsx"/>
- <tileset firstgid="53" source="../../../../commondata/PlanetCute/Shadows.tsx"/>
+ <tileset firstgid="1" name="Blocks" tilewidth="101" tileheight="171" spacing="2" margin="1">
+  <image source="../../../../commondata/PlanetCute/Blocks/BlockTiles.png" width="412" height="519"/>
+ </tileset>
+ <tileset firstgid="13" name="Architecture" tilewidth="101" tileheight="171" spacing="2" margin="1">
+  <image source="../../../../commondata/PlanetCute/Architecture/ArchitectureTiles.png" width="412" height="692"/>
+ </tileset>
+ <tileset firstgid="29" name="Doodads" tilewidth="101" tileheight="171" spacing="2" margin="1">
+  <image source="../../../../commondata/PlanetCute/Doodads/DoodadTiles.png" width="412" height="692"/>
+ </tileset>
+ <tileset firstgid="45" name="Characters" tilewidth="101" tileheight="171" spacing="2" margin="1">
+  <image source="../../../../commondata/PlanetCute/Characters/CharacterTiles.png" width="412" height="346"/>
+ </tileset>
+ <tileset firstgid="53" name="Shadows" tilewidth="101" tileheight="171" spacing="2" margin="1">
+  <image source="../../../../commondata/PlanetCute/Shadows/ShadowTiles.png" width="412" height="519"/>
+ </tileset>
  <layer name="Tile Layer 1" width="100" height="100">
   <data encoding="base64" compression="zlib">
    eJzt0zENADAMwLBq/EEPQXbuqS0FQmYAAAD+Oo9gO39A8wc0f0DzBzR/QPMHNH8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABbXLHmAHE=
   </data>
  </layer>
- <layer name="Tile Layer 2" width="100" height="100" visible="0">
+ <layer name="Tile Layer 2" width="100" height="100">
   <data encoding="base64" compression="zlib">
    eJzt2MEJACAQA8EDwf5LFv/mvoLOQErYT6oAAOB9sxn8bncwDtMH6AM6+oBMH5DpAzJ9QObfBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4IYFsNcA9w==
   </data>
  </layer>
- <layer name="Tile Layer 3" width="100" height="100" visible="0">
+ <layer name="Tile Layer 3" width="100" height="100">
   <data encoding="base64" compression="zlib">
    eJzt2LENADAMw7BM/f/kXqBsnUoCPkGLZwAAeOEsg99VB/oAfcBGH9D0AU0f0PQBzb8LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXGstAJ0=
   </data>
  </layer>
- <objectgroup color="#1fa410" name="Object Layer 1" width="100" height="100" visible="0">
+ <objectgroup color="#1fa410" name="Object Layer 1" width="100" height="100">
   <object x="202" y="200" width="707" height="80"/>
   <object x="202" y="280" width="101" height="480"/>
   <object x="808" y="280" width="101" height="480"/>

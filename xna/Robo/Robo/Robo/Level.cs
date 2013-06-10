@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
+using FuncWorks.XNA.XTiled;
 
 
 namespace Robo
@@ -12,11 +13,18 @@ namespace Robo
    /// <summary>
    /// This is a game component that implements IUpdateable.
    /// </summary>
-   public class Level : Microsoft.Xna.Framework.DrawableGameComponent
+   class Level
    {
+      public Map map;
+      public Rectangle mapView;
+      public int collisionLayer;
+      public int deathLayer;
+      public int objectiveLayer;
+
       public Level(Game game)
-         : base(game)
       {
+         Map.InitObjectDrawing(game.GraphicsDevice);
+            
          // TODO: Construct any child components here
       }
 
@@ -24,28 +32,55 @@ namespace Robo
       /// Allows the game component to perform any initialization it needs to before starting
       /// to run.  This is where it can query for any required services and load content.
       /// </summary>
-      public override void Initialize()
+      public void Initialize(Rectangle viewBounds, Map map)
       {
-         // TODO: Add your initialization code here
+         this.map = map;
+         mapView = new Rectangle(0, 0, viewBounds.Width, viewBounds.Height);
 
-         base.Initialize();
+         for (int i = 0; i < map.ObjectLayers.Count; i++)
+         {
+            switch (map.ObjectLayers[i].Name)
+            {
+               case "Collision":
+                  collisionLayer = i;
+                  break;
+               case "Death":
+                  deathLayer = i;
+                  break;
+               case "Objective":
+                  objectiveLayer = i;
+                  break;
+               default:
+                  break;
+            }
+         }
+
       }
+
 
       /// <summary>
       /// Allows the game component to update itself.
       /// </summary>
       /// <param name="gameTime">Provides a snapshot of timing values.</param>
-      public override void Update(GameTime gameTime)
+      public void Update(GameTime gameTime)
       {
-         // TODO: Add your update code here
 
-         base.Update(gameTime);
       }
 
-      public override void Draw(GameTime gameTime)
+      public void Draw(GameTime gameTime, SpriteBatch sb, Player player)
       {
-         //TODO: Add drawing code here
-         base.Draw(gameTime);
+         Single depth = 0;
+         for (int i = 0; i < map.LayerOrder.Length; i++)
+         {
+            LayerInfo li = map.LayerOrder[i];
+            if (li.LayerType == LayerType.TileLayer)
+               map.DrawLayer(sb, map.LayerOrder[i].ID, map.Bounds, depth);
+            if (li.LayerType == LayerType.ObjectLayer)
+               map.DrawObjectLayer(sb, map.LayerOrder[i].ID, map.Bounds, depth);
+
+         }
+
+         //map.DrawObjectLayer(sb, 0, map.Bounds, 0);
       }
    }
 }

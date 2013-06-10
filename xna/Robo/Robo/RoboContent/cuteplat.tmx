@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="101" tileheight="40">
+ <tileset firstgid="1" name="Blocks" tilewidth="101" tileheight="171" spacing="2" margin="1">
+  <image source="../../../../commondata/PlanetCute/Blocks/BlockTiles.png" width="412" height="519"/>
+ </tileset>
+ <tileset firstgid="13" name="Architecture" tilewidth="101" tileheight="171" spacing="2" margin="1">
+  <image source="../../../../commondata/PlanetCute/Architecture/ArchitectureTiles.png" width="412" height="692"/>
+ </tileset>
+ <tileset firstgid="29" name="Doodads" tilewidth="101" tileheight="171" spacing="2" margin="1">
+  <image source="../../../../commondata/PlanetCute/Doodads/DoodadTiles.png" width="412" height="692"/>
+ </tileset>
+ <layer name="1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt08EKgCAQQEEpyOz/P7gEA1HqaAYz8NCruxgCAAD04lUaXBzysn+yj7nk2exNa2mpynM8Sqk63+53W5N9PPM/5mIfAAAAAAB86QSLjAUH
+  </data>
+ </layer>
+ <layer name="2" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzrEJACAMRcGgnYO4/4gqWFiIlSDCHTzyy0QAAAC8l3tpNpRZLPe0d+qd1wAAAAAAAPhEA+X7AGA=
+  </data>
+ </layer>
+ <layer name="3" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt00EKQCEIBUChRdD9DxwfCloV/JXRDIjuHihGAADkUB/JvIV75HLaTRn1aaNi6bv5b+bL/Ecu7gEAAAAAAEwdgOsAfw==
+  </data>
+ </layer>
+ <layer name="4" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztyKENAAAMw7Di/X/weC8osKWQJAAAQLuqPwAAAAAAALDnAa7SAD0=
+  </data>
+ </layer>
+ <layer name="5" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztw7ENAAAIA6DO/n+wS08wTpCQAADAvWkAAAAAAACALwtkJgAV
+  </data>
+ </layer>
+ <layer name="6" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+  </data>
+ </layer>
+ <objectgroup color="#0041a4" name="Collision" width="50" height="50">
+  <object x="0" y="320" width="101" height="560"/>
+  <object x="101" y="640" width="606" height="40"/>
+  <object x="707" y="600" width="101" height="80"/>
+  <object x="808" y="560" width="202" height="120"/>
+  <object x="1111" y="560" width="202" height="120"/>
+  <object x="1414" y="520" width="101" height="160"/>
+  <object x="1515" y="520" width="101" height="80"/>
+  <object x="1616" y="480" width="101" height="120"/>
+  <object x="2121" y="520" width="101" height="80"/>
+  <object x="2525" y="640" width="404" height="40"/>
+  <object x="2928" y="316" width="99" height="561"/>
+  <object x="1717" y="480" width="101" height="200"/>
+  <object x="2020" y="520" width="101" height="160"/>
+ </objectgroup>
+ <objectgroup color="#e60003" name="Death" width="50" height="50">
+  <object x="0" y="650" width="5050" height="40"/>
+ </objectgroup>
+ <objectgroup color="#cec215" name="Objective" width="50" height="50">
+  <object x="2828" y="600" width="101" height="80"/>
+ </objectgroup>
+</map>
