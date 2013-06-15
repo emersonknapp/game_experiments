@@ -12,7 +12,13 @@ namespace Robo
 
       public Vector2 velocity;
 
-      public Vector2 pos;
+      protected Vector2 _pos;
+      public Vector2 pos
+      {
+         get { return _pos; }
+         set { _pos = value; }
+      }
+      
 
       protected virtual void Initialize(Vector2 startPos)
       {
@@ -54,6 +60,12 @@ namespace Robo
    abstract class AnimatedSprite : Sprite
    {
       public Animation animation;
+
+      public Vector2 pos
+      {
+         get { return base.pos; }
+         set { base.pos = value; animation.Position = pos; }
+      }
 
       public int width
       {

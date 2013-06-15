@@ -31,7 +31,7 @@ namespace Robo
       Level currentLevel;
       ParallaxBackground background;
 
-      Texture2D pixel;
+
 
       public RoboGame()
       {
@@ -75,8 +75,8 @@ namespace Robo
          // Create a new SpriteBatch, which can be used to draw textures.
          spriteBatch = new SpriteBatch(GraphicsDevice);
 
-         pixel = new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-         pixel.SetData(new[] { Color.White });
+         Util.pixel = new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+         Util.pixel.SetData(new[] { Color.White });
 
          currentLevel.Initialize(graphics.GraphicsDevice.Viewport.Bounds, Content.Load<Map>(Constants.startMapName));
          background.Initialize(Content, Constants.staticBackgroundName, new Dictionary<string, int>(), currentLevel.map.Width);
@@ -134,11 +134,11 @@ namespace Robo
                   player.velocity.X += Constants.playerSpeed;
                   break;
                case Keys.Up:
-                  if (player.grounded)
-                  {
+                  //if (player.grounded)
+                  //{
                      player.velocity.Y -= Constants.playerJumpSpeed;
                      player.grounded = false;
-                  }
+                  //}
                   break;
                //case Keys.Down:
                //   player.velocity.Y += Constants.playerSpeed;
@@ -168,44 +168,10 @@ namespace Robo
             }
          }
 
-         /*
-         //Test camera movement
-         Vector2 delta = Vector2.Zero;
-         if (keys.IsKeyDown(Keys.Down))
-            delta.Y += Convert.ToInt32(gameTime.ElapsedGameTime.TotalMilliseconds / 4);
-         if (keys.IsKeyDown(Keys.Up))
-            delta.Y -= Convert.ToInt32(gameTime.ElapsedGameTime.TotalMilliseconds / 4);
-         if (keys.IsKeyDown(Keys.Right))
-            delta.X += Convert.ToInt32(gameTime.ElapsedGameTime.TotalMilliseconds / 4);
-         if (keys.IsKeyDown(Keys.Left))
-            delta.X -= Convert.ToInt32(gameTime.ElapsedGameTime.TotalMilliseconds / 4);
-         camera.Move(delta);
-
-         if (keys.IsKeyDown(Keys.H))
-            camera.pos = Vector2.Zero;
-
-         //Test camera rotation
-         if (keys.IsKeyDown(Keys.Q))
-            camera.rotation += 0.1f;
-         if (keys.IsKeyDown(Keys.A))
-            camera.rotation -= 0.1f;
-         if (keys.IsKeyDown(Keys.Z))
-            camera.rotation = 0;
-
-         //Test camera zoom
-         if (keys.IsKeyDown(Keys.W))
-            camera.zoom += 0.1f;
-         if (keys.IsKeyDown(Keys.S))
-            camera.zoom -= 0.1f;
-         if (keys.IsKeyDown(Keys.X))
-            camera .zoom = 1.0f;
-         */
-
          background.Update();
 
          player.Update(gameTime);
-         physics.Apply(gameTime, player);
-         physics.Collide(player, currentLevel);
+         physics.Apply(gameTime, player, currentLevel);
 
          camera.Update(gameTime, GraphicsDevice, currentLevel.map);
 
@@ -214,26 +180,6 @@ namespace Robo
          Constants.totalUpdates++;
       }
 
-
-      private void DrawBorder(Rectangle rectangleToDraw, int thicknessOfBorder, Color borderColor)
-      {
-         // Draw top line
-         spriteBatch.Draw(pixel, new Rectangle(rectangleToDraw.X, rectangleToDraw.Y, rectangleToDraw.Width, thicknessOfBorder), borderColor);
-
-         // Draw left line
-         spriteBatch.Draw(pixel, new Rectangle(rectangleToDraw.X, rectangleToDraw.Y, thicknessOfBorder, rectangleToDraw.Height), borderColor);
-
-         // Draw right line
-         spriteBatch.Draw(pixel, new Rectangle((rectangleToDraw.X + rectangleToDraw.Width - thicknessOfBorder),
-                                         rectangleToDraw.Y,
-                                         thicknessOfBorder,
-                                         rectangleToDraw.Height), borderColor);
-         // Draw bottom line
-         spriteBatch.Draw(pixel, new Rectangle(rectangleToDraw.X,
-                                         rectangleToDraw.Y + rectangleToDraw.Height - thicknessOfBorder,
-                                         rectangleToDraw.Width,
-                                         thicknessOfBorder), borderColor);
-      }
 
       /// <summary>
       /// This is called when the game should draw itself.
@@ -254,14 +200,7 @@ namespace Robo
          background.Draw(spriteBatch, camera.getTopLeft(graphics.GraphicsDevice.Viewport)+new Vector2(0f, -300f));
          currentLevel.Draw(gameTime, spriteBatch, player);
          player.Draw(spriteBatch);
-         DrawBorder(player.collision.rect, 5, Color.Red);
-         //Console.Write(player.pos);
-         //Console.Write(player.collision.pos);
-         //Console.WriteLine();
-         //Console.Write(player.animation.Position);
-         //Console.Write(player.animation.destinationRect);
-         //Console.WriteLine();
-         //Console.WriteLine();
+         Util.DrawHollowRect(player.collision.rect, 5, Color.Red, spriteBatch);
          
          //End Drawing Code
          spriteBatch.End();

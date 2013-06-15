@@ -16,6 +16,11 @@ namespace Robo
          pos = new Vector2(x, y);
          size = new Vector2(dx, dy);
       }
+      public Box(Box b)
+      {
+         pos = b.pos;
+         size = b.size;
+      }
       public Box(Rectangle r)
       {
          pos = new Vector2(r.Left, r.Top);
@@ -52,6 +57,27 @@ namespace Robo
          get { return size.Y; }
          set { size.Y = value; }
       }
+
+      public Box shrinkWrap(Rectangle r)
+      {
+         if (r.Width == 0 || r.Height == 0)
+            return new Box(r);
+         //Box b = new Box(r);
+
+         float newLeft = Math.Max(r.Left, Left);
+         float newTop = Math.Max(r.Top, Top);
+         float newRight = Math.Min(r.Right, Right);
+         float newBottom = Math.Min(r.Bottom, Bottom);
+
+         return new Box(newLeft, newTop, newRight - newLeft, newBottom - newTop);
+      }
+
+      public bool Equals(Box b)
+      {
+         return (b.pos == pos && b.size == size);
+      }
+
+
 
       public Rectangle rect
       {

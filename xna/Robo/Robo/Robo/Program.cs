@@ -12,6 +12,9 @@ namespace Robo
         {
             using (RoboGame game = new RoboGame())
             {
+               if (!Test.runTests())
+                  return;
+
                 game.Run();
             }
         }

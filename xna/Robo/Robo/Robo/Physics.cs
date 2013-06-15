@@ -9,37 +9,84 @@ namespace Robo
 {
    class Physics
    {
-      public void Apply(GameTime gt, Player s)
+      public enum Axis { X, Y };
+
+      public void Apply(GameTime gt, Player player, Level level)
       {
          float dt = gt.ElapsedGameTime.Milliseconds / 1000f;
-         //if (!s.grounded)
-            s.velocity.Y += Constants.gravity * dt;
 
-         s.Move( new Vector2(s.velocity.X * dt, s.velocity.Y * dt));
+         player.velocity.Y += Constants.gravity * dt;
 
+         Box endBox = new Box(player.collision) ;
+
+         float dx = player.velocity.X * dt;
+         float dy = player.velocity.Y * dt;
+
+         Rectangle checkRect ;
+
+         IEnumerable<MapObject> collideObjects;
+
+         if (dx != 0)
+         {
+            endBox.Left += dx;
+            checkRect = endBox.rect;
+            checkRect.Inflate(1, 1);
+            collideObjects = level.map.GetObjectsInRegion(level.collisionLayer, checkRect);
+
+            foreach (var obj in collideObjects)
+            {
+               Vector2 delta = adjustPos(ref endBox, obj, Axis.X);
+               endBox.pos += delta;
+            }
+         }
+
+         endBox.Top += dy;
+
+         checkRect = endBox.rect;
+         checkRect.Inflate(1, 1);
+         collideObjects = level.map.GetObjectsInRegion(level.collisionLayer, checkRect);
+
+         foreach (var obj in collideObjects)
+         {
+            Vector2 delta = adjustPos(ref endBox, obj, Axis.Y);
+            endBox.pos -= delta;
+            if (delta.Y != 0)
+            {
+               player.velocity.Y = 0;
+               if (delta.Y > 0) player.grounded = true;
+            }
+         }
+
+         player.pos = endBox.pos;
       }
-      protected Vector2 adjustPos(ref Box mover, Vector2 velocity, MapObject platform)
+
+      protected Vector2 adjustPos(ref Box mover, MapObject platform, Axis axis)
       {
          if (platform.Polygon != null)
             return Vector2.Zero;
          //return adjustPos(ref mover, platform.Polygon);
          else
-            return adjustPos(ref mover, velocity, platform.Bounds);         
+            return adjustPos(ref mover, platform.Bounds, axis);
       }
 
-      protected Vector2 adjustPos(ref Box mover, Vector2 velocity, Rectangle platform)
+
+      protected Vector2 adjustPos(ref Box mover, Rectangle platform, Axis axis)
       {
-         Box delta = new Box(Rectangle.Intersect(mover.rect, platform));
+         Rectangle checkRect = mover.rect;
+         checkRect.Inflate(1, 1);
+         Box delta = mover.shrinkWrap(Rectangle.Intersect(checkRect, platform));
 
-         delta.Left = delta.Left < mover.Left ? mover.Left : delta.Left;
-         delta.Top = delta.Top < mover.Top ? mover.Top : delta.Top;
-         if (delta.Right > mover.Right)
-            delta.Width = mover.Right - delta.Left;
-         if (delta.Bottom > mover.Bottom)
-            delta.Height = mover.Bottom - delta.Top;
-
-         float adjustY = delta.Height*-1;// *(delta.Y > mover.Y ? -1 : 1);
-         return new Vector2(0, adjustY);
+         if (axis == Axis.X)
+         {
+            if (mover.Left >= platform.Left && mover.Right <= platform.Right) return Vector2.Zero;
+           
+            return new Vector2(delta.Width, 0);
+         }
+         else
+         {
+            if (mover.Top >= platform.Top && mover.Bottom <= platform.Bottom) return Vector2.Zero;
+            return new Vector2(0, delta.Height);
+         }
       }
 
       protected float adjustY(ref Rectangle mover, Polygon platform)
@@ -71,21 +118,7 @@ namespace Robo
          }
          return delta.Height * (delta.Y > mover.Y ? -1 : 1);
       }
-      public void Collide(Player player, Level level)
-      {
-         Rectangle checkRect = player.collision.rect;
-         checkRect.Inflate(1, 1);
-         foreach (var obj in level.map.GetObjectsInRegion(level.collisionLayer, checkRect))
-         {
-            Vector2 delta = adjustPos(ref player.collision, player.velocity, obj);
-            if (delta.Y != 0f)
-            {
-               player.velocity.Y = 0;
-               player.grounded = true;
-            }
-            player.Move(delta);
-         }
-      }
+
 
    }
 }
