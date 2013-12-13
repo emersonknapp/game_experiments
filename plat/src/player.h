@@ -14,8 +14,8 @@ public:
 	{
 		ANI_STAND,
 		ANI_WALK,
-		ANI_UPJUMP,
-		ANI_DOWNJUMP,
+		ANI_RISE,
+		ANI_FALL,
 		NUM_ANIMATIONS
 	};
 
@@ -23,7 +23,8 @@ public:
 	~Player();
 	void setAnimation(eAnimation which, Animation* ani);
 	void draw();
-	void force(double dvx, double dvy);
+	void force(double dvx, double dvy, bool useSpeed);
+	void jump();
 	void update(double dt); //in seconds
 private:
 	Vector2d m_pos;
@@ -33,5 +34,5 @@ private:
 	Animation* m_animations[NUM_ANIMATIONS];
 	double m_speed;
 
-	//bool m_grounded;
+	bool m_grounded;
 };

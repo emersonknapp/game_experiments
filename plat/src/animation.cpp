@@ -22,7 +22,7 @@ Animation::Animation(int tex, std::string pixenFrameDataXMLFile)
 	glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &texHeight);
 	std::cout << texWidth << " by " << texHeight << std::endl;
 
-	m_frameSize = texHeight;
+	m_frameSize = texHeight*2;
 
 
 	if (texWidth == texHeight) return;

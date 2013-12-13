@@ -1,5 +1,8 @@
+#pragma once
+
 #include "player.h"
 #include <string>
+#include <map>
 
 class Game
 {
@@ -18,11 +21,12 @@ public:
 
 
 private:
-	void loadGLTexture(std::string file);
+	void loadGLTexture(std::string file, std::string identifier);
 	void loadAnimations();
 
 
   	Player* m_player;
-  	std::vector<int> m_textures;
+  	std::map<std::string, int> m_textures;
+  	std::map<std::string, Animation*> m_animations;
 	
 };
